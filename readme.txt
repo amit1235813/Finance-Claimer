@@ -1,4 +1,10 @@
-Chapter 4 - Create an Express server to listen on a Product
+Chapter 5 - Refactor code to move out User Model
+1. Move User model to a seaprate JS file
+2. Require mongoose there
+3. Export it
+4. Import and test in index file
+
+Chapter 4 - Create an Express server to listen on a port
 1. Install Express
 2. Import or require Express
 3. Listen on a port
