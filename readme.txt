@@ -1,3 +1,14 @@
+Chapter 6 - Create API with a URL to send create user requests. Test on Postman.
+1. Create an express router object in a new file
+2. Created a post method on this router object
+3. Extracted user details from the request object
+4. Saved the user object to Database
+5. Sent back a response
+5. The Express string to JSON method for all paths is executed
+6. The Express use method has a default path of '/'. Made this explicit
+7. Installed nodemon to keep the server running on code changes
+8. All Express API paths start with a slash
+
 Chapter 5 - Refactor code to move out User Model
 1. Move User model to a seaprate JS file
 2. Require mongoose there
