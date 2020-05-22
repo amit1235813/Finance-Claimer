@@ -1,3 +1,9 @@
+Chapter 7 - Created a form to create a Team Mate
+1. Added a last name in the Schema, Model, API and User requirement
+2. Create a Bootstrap form
+3. Created CSS and JS for it - some local and some from Bootstrap CDN
+4. Mapped the fields to User Sheet
+
 Chapter 6 - Create API with a URL to send create user requests. Test on Postman.
 1. Create an express router object in a new file
 2. Created a post method on this router object

@@ -11,7 +11,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     //Add validation
     let user = new User({
-        name: req.body.name,
+        firstName: req.body.firstName,
         email: req.body.email,
         userRole: req.body.userRole,
         accountName: req.body.accountName,
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 
     user = await user.save();
 
-    res.send(user) //Edit code to send only ID, name and urerRole
+    res.send(user) //Edit code to send only ID, first name and urerRole
 });
 
 module.exports = router;

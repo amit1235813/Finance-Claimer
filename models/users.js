@@ -1,12 +1,20 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         //Removes whitespace from beginning and end of a string
         //https://docs.mongodb.com/manual/reference/operator/aggregation/trim/
         trim: true,
-        required: [true, 'Name is required'],
+        required: [true, 'First name is required'],
+        minlength: 1,
+        maxlength: 255
+        
+    },
+    lastName: {
+        type: String,
+        trim: true,
+        required: [true, 'Last name is required'],
         minlength: 1,
         maxlength: 255
         
@@ -42,7 +50,7 @@ const userSchema = new mongoose.Schema({
         // },
         minlength: 1,
         maxlength: 255,
-        required: function() { return this.userRole === 'Project Manager' }
+        //required: function() { return this.userRole === 'Project Manager' }
     },
     bankName: {
         type: String,
