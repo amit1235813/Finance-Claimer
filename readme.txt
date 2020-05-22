@@ -1,3 +1,16 @@
+Chapter 3 - Creating Schema for User Collection. Using Schema Types. Using Schema Type Options which are functions known as validators.
+1. Created User Schema
+2. Used SchemaTypes of String and Number
+3. Used Schema Type Options which are validator functions
+4. For String, used uppercase, trim, match, enum, minlength and maxlength validation functions
+5. Match function matches with a RegExp
+6. Used require validation function with error handling
+7. Unique option is not a validtor - uses the column to create unique IDs.
+Its a MongoDB function
+https://mongoosejs.com/docs/validation.html
+https://docs.mongodb.com/manual/core/index-unique/
+
+
 Chapter 2 - Install Mongoose. Learn about Database, Collection, Schema, Model, Document and Promises.
 1. Install mongoose
 2. Create gitgignore file and mention node_modules
