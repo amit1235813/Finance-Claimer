@@ -1,5 +1,7 @@
-const mongoose =  require('mongoose');
-
+const mongoose = require('mongoose');
+const express = require('express');
+const app =  express();
+const port = 3000;
 //Example to connect to MongoDB, create a Schema and Model, create an row
 //available onMongoDB website homepage
 //https://mongoosejs.com/
@@ -46,9 +48,13 @@ const userSchema = new mongoose.Schema({
     accountName: {
         type: String,
         trim: true,
-        required: [true, 'Account Name is required'],
+        //required: function() [{ return this.userRole === 'Project Manager'; }, 'YOUR CUSTOME MSG HERE'],
+        // required: function () {
+        //     return this.userRole === 'Project Manager';
+        // },
         minlength: 1,
-        maxlength: 255
+        maxlength: 255,
+        required: function() { return this.userRole === 'Project Manager' }
     },
     bankName: {
         type: String,
@@ -74,6 +80,8 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+//userSchema.path('accountName').required(function() { return this.userRole === 'Project Manager'; }, 'your custom message here');
+
 const User = mongoose.model('user', userSchema);
 
 const newUser = new User({
@@ -91,3 +99,12 @@ newUser.save()
     .catch((error) =>  { 
         console.log('User could not be saved to MongoDB...', error);
     });
+
+
+app.listen(port, function() {
+    console.log(`Express listening on port ${port}`);
+});
+
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});

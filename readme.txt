@@ -1,3 +1,9 @@
+Chapter 4 - Create an Express server to listen on a Product
+1. Install Express
+2. Import or require Express
+3. Listen on a port
+4. Send back a response to test
+
 Chapter 3 - Creating Schema for User Collection. Using Schema Types. Using Schema Type Options which are functions known as validators.
 1. Created User Schema
 2. Used SchemaTypes of String and Number
@@ -19,7 +25,7 @@ Chapter 2 - Install Mongoose. Learn about Database, Collection, Schema, Model, D
 5. Connect to Mongoose
 6. This a returns a Promise object - handle the states of that Promise object
 7. Create on Object Schema which is a Mongoose Class. MongoDB is Schema Less.
-8. Concert Schema to a Model which is a JS object
+8. Connect Schema to a Model which is a JS object
 8. Save a row. This also returns a Promise object. Handle that Promise object.
 
 
