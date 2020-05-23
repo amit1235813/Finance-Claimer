@@ -1,9 +1,20 @@
+Chapter 15 - Deploy to Heroku post App crash
+1. URL need to be changed at 3 places
+2. MongoDB where databse is being created
+3. Express Port where requests are being listened to
+4. Frontend URL being used to send requests - no slash in beginning
+5. White list all IP addresses in MongoDB
+6. Use absolute path for the folder to be on the safe side
+7. Tested deploy on Cercel server.
+8. Changed name of library from @hapi/Joi to @hapi/joi - This was crashing the app.
+9. Created alert for Prod to get confirmation of user creation.
+
 Chapter 14 - Deploy to Heroku
 1. Install and use Helmet - Adds security headers in HTTP response
 2. Install and use Compression - Reduces size of response objects sent to client
 3. Check if Heroku is installed/Install Heroku
 4. Login to Heroku
-5. Add npm start and node engine for reference of Heroku
+5. Add npm start and node and npm engine for reference of Heroku
 6. Move nodemon to dev dependencies. Although, developmnet environment flag has not been created.
 7. Steps post commit - Create remote URL in Heroku. Push to remote URL.
 
