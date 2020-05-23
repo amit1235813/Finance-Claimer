@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 const express = require('express');
 const app =  express();
-const port = 3000;
+//There is no port object for Node. But Heroku uses it to set a Port
+//https://nodejs.org/api/process.html#process_process_env
+const port = process.env.PORT || 3000;
 
 const helmet = require('helmet');
 const compression = require('compression');
