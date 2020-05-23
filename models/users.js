@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Joi = require('@hapi/Joi');
+const Joi = require('@hapi/joi');
 
 const userSchema = new mongoose.Schema({
     firstName: {
