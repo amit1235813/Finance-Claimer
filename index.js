@@ -5,6 +5,7 @@ const app =  express();
 //There is no port object for Node. But Heroku uses it to set a Port
 //https://nodejs.org/api/process.html#process_process_env
 const port = process.env.PORT || 3000;
+const path = require('path');
 
 const helmet = require('helmet');
 const compression = require('compression');
@@ -38,7 +39,8 @@ app.use('/', compression());
 //Node is now running the server on a port and serving the index html at the same port
 //No need of CORS
 //https://expressjs.com/en/starter/static-files.html
-app.use('/', express.static('frontend'))
+//https://nodejs.org/api/path.html#path_path
+app.use('/', express.static(path.join(__dirname, 'frontend')));
 
 //Built in moddlweware. Converts incoming request strings into JSON object.
 //For all paths.
