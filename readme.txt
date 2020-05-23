@@ -1,3 +1,8 @@
+Chapter 11 - Bank details not needed for certain users
+1. Added condition for Field or Sheet Columns before saving in the API
+2. Did not add Joi validation - its a condition
+3. Remove Form Fields in HTML if value is of a certain type
+
 Chapter 10 - Trim response with Lodash
 1. Corrected Joi regex validation
 2. Installed Lodash

@@ -1,6 +1,30 @@
-console.log('hello world');
+//console.log('hello world');
 
 const form = document.forms[0];
+
+function bankDetails() {
+  //Remove Bank Details questiosn if user is of certain type
+  //console.log('Input value changing');
+  let userRole = document.getElementsByName('userRole')[0].value;
+  //console.log(userRole);
+  let bankElements = document.getElementsByClassName('bankDetails');
+  //console.log(bankElements);
+
+  if (userRole === 'Mumbai Team' ||  userRole === 'Delhi Team') {
+
+    for (let element of bankElements) {
+      element.style.display = 'none'
+    }
+    
+    // user.bankName = undefined;
+    // user.bankAccountNumber = undefined;
+    // user.ifscCode = undefined;
+  } else {
+    for (let element of bankElements) {
+      element.style.display = 'initial' //Deafult style
+    }
+  }
+}
 
 //Get form data
 //https://www.valentinog.com/blog/formdata/

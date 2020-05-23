@@ -5,30 +5,40 @@
     <title>HTML forms and JavaScript</title>
 </head>
 <body>
-<form>
+<form id='userForm'>
     <label for="name">First Name</label>
-    <input type="text" id="name" name="firstName" required>
+    <input type="text" name="firstName" required>
 
     <label for="description">Last Name</label>
-    <input type="text" id="description" name="lastName" required>
+    <input type="text" name="lastName" required>
 
     <label for="task">Email</label>
-    <textarea id="task" name="email" required></textarea>
+    <input name="email" required></input>
 
-    <label for="description">User Role</label>
-    <input type="text" id="description" name="userRole" required>
+    <!-- <label for="description">User Role</label>
+    <input type="text" name="userRole" required onchange="bankDetails()"> -->
 
-    <label for="description">Account Name</label>
-    <input type="text" id="description" name="accountName" required>
+    <label for="cars">User role</label>
 
-    <label for="description">Bank Name</label>
-    <input type="text" id="description" name="bankName" required>
+    <select name="userRole" onchange="bankDetails()">
+        <option value="Project Manager">Project Manager</option>
+        <option value="Associate Project Manager">Associate Project Manager</option>
+        <option value="Bangalore Team">Bangalore Team</option>
+        <option value="Mumbai Team">Mumbai Team</option>
+        <option value="Delhi Team">Delhi Team</option>
+    </select>
 
-    <label for="description">Account no</label>
-    <input type="text" id="description" name="bankAccountNumber" required>
+    <label class="bankDetails" for="description">Account Name</label>
+    <input class="bankDetails" type="text" name="accountName">
 
-    <label for="description">IFSC code</label>
-    <input type="text" id="description" name="ifscCode" required>
+    <label class="bankDetails" for="description">Bank Name</label>
+    <input class="bankDetails" type="text" name="bankName" required>
+
+    <label class="bankDetails" for="description">Account no</label>
+    <input class="bankDetails" type="text" name="bankAccountNumber" required>
+
+    <label class="bankDetails" for="description">IFSC code</label>
+    <input class="bankDetails" type="text" name="ifscCode" required>
 
     <button type="submit" >Submit</button>
 </form>

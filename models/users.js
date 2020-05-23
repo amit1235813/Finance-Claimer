@@ -45,6 +45,8 @@ const userSchema = new mongoose.Schema({
     accountName: {
         type: String,
         trim: true,
+        //Required function checks if type is string
+        //https://mongoosejs.com/docs/api.html#schematype_SchemaType-checkRequired,
         //required: function() [{ return this.userRole === 'Project Manager'; }, 'YOUR CUSTOME MSG HERE'],
         // required: function () {
         //     return this.userRole === 'Project Manager';
@@ -56,19 +58,19 @@ const userSchema = new mongoose.Schema({
     bankName: {
         type: String,
         trim: true,
-        required: [true, 'Bank name is required'],
+        //required: [true, 'Bank name is required'],
         minlength: 1,
         maxlength: 255
     },
     bankAccountNumber: {
         type: Number,
-        required: true
+        //required: true
     },
     ifscCode: {
         type: String,
         trim: true,
         uppercase: true,
-        required: [true, 'IFSC Code is required'],
+        //required: [true, 'IFSC Code is required'],
         minlength: 11,
         maxlength: 11,
         //Any 4 alphabtets followed by a 0 followed by 6 aplhabets
@@ -92,10 +94,10 @@ function validateUserReq (user) {
                     'Bangalore Team',
                     'Mumbai Team',
                     'Delhi Team'),
-        accountName: Joi.string().min(1).max(255).required(),
-        bankName: Joi.string().min(1).max(255).required(),
-        bankAccountNumber: Joi.number().required(),
-        ifscCode: Joi.string().min(1).max(255).required().regex(RegExp("^[a-zA-Z]{4}0[a-zA-Z]{6}$")),
+        accountName: Joi.string().min(1).max(255),
+        bankName: Joi.string().min(1).max(255),
+        bankAccountNumber: Joi.number(),
+        ifscCode: Joi.string().min(1).max(255).regex(RegExp("^[a-zA-Z]{4}0[a-zA-Z]{6}$")),
     });
 
     return schema.validate(user);

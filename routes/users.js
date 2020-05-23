@@ -29,6 +29,15 @@ router.post('/', async (req, res) => {
         ifscCode: req.body.ifscCode
     });
 
+    //Condition - Do not save bank details for specific users
+    //https://stackoverflow.com/questions/12636938/set-field-as-empty-for-mongo-object-using-mongoose
+    if (user.userRole === 'Mumbai Team' ||  user.userRole === 'Delhi Team') {
+        user.accountName = undefined;
+        user.bankName = undefined;
+        user.bankAccountNumber = undefined;
+        user.ifscCode = undefined;
+    }
+
     user = await user.save();
 
     res.send(_.pick(user, ['_id', 'firstName', 'userRole'])); //Edit code to send only ID, first name and userRole
