@@ -1,3 +1,12 @@
+Chapter 14 - Deploy to Heroku
+1. Install and use Helmet - Adds security headers in HTTP response
+2. Install and use Compression - Reduces size of response objects sent to client
+3. Check if Heroku is installed/Install Heroku
+4. Login to Heroku
+5. Add npm start and node engine for reference of Heroku
+6. Move nodemon to dev dependencies. Although, developmnet environment flag has not been created.
+7. Steps post commit - Create remote URL in Heroku. Push to remote URL.
+
 Chapter 13 - Frontend for validation in HTML
 1. All validation done using HTML input atrributes
 2. No JS used
@@ -87,7 +96,7 @@ Chapter 2 - Install Mongoose. Learn about Database, Collection, Schema, Model, D
 6. This a returns a Promise object - handle the states of that Promise object
 7. Create on Object Schema which is a Mongoose Class. MongoDB is Schema Less.
 8. Connect Schema to a Model which is a JS object
-8. Save a row. This also returns a Promise object. Handle that Promise object.
+9. Save a row. This also returns a Promise object. Handle that Promise object.
 
 
 Chapter 1 - Define user requirements, Initialise npm and git

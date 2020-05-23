@@ -4,6 +4,8 @@ const express = require('express');
 const app =  express();
 const port = 3000;
 
+const helmet = require('helmet');
+const compression = require('compression');
 //const cors = require('cors');
 
 const users = require('./routes/users');
@@ -23,6 +25,11 @@ app.listen(port, function() {
 });
 
 //app.use('/', cors());
+//https://helmetjs.github.io/
+app.use('/', helmet());
+
+//https://www.npmjs.com/package/compression
+app.use('/', compression());
 
 //Node is now running the server on a port and serving the index html at the same port
 //No need of CORS
