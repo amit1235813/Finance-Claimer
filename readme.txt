@@ -1,3 +1,8 @@
+Chapter 13 - Frontend for validation in HTML
+1. All validation done using HTML input atrributes
+2. No JS used
+3. Attributes used - required, autofocus, minlength, maxlength, type, pattern for regex
+
 Chapter 12 - Run both backend and frontend from the same port
 1. Run index html from the same port as backend code
 2. Tested creation of a user

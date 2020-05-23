@@ -6,19 +6,21 @@
 </head>
 <body>
 <form id='userForm'>
+    <!-- Validation
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
     <label for="name">First Name</label>
-    <input type="text" name="firstName" required>
+    <input type="text" name="firstName" required autofocus minlength="1" maxlength="255">
 
     <label for="description">Last Name</label>
-    <input type="text" name="lastName" required>
+    <input type="text" name="lastName" required minlength="1" maxlength="255">
 
     <label for="task">Email</label>
-    <input name="email" required></input>
+    <input type="email" name="email" required minlength="1" maxlength="255" pattern="^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]+)(\.[a-z]+)*$">
 
     <!-- <label for="description">User Role</label>
     <input type="text" name="userRole" required onchange="bankDetails()"> -->
 
-    <label for="cars">User role</label>
+    <label for="userRole">User role</label>
 
     <select name="userRole" onchange="bankDetails()">
         <option value="Project Manager">Project Manager</option>
@@ -29,16 +31,16 @@
     </select>
 
     <label class="bankDetails" for="description">Account Name</label>
-    <input class="bankDetails" type="text" name="accountName">
+    <input class="bankDetails" type="text" name="accountName" required minlength="1" maxlength="255">
 
     <label class="bankDetails" for="description">Bank Name</label>
-    <input class="bankDetails" type="text" name="bankName" required>
+    <input class="bankDetails" type="text" name="bankName" required minlength="1" maxlength="255">
 
     <label class="bankDetails" for="description">Account no</label>
-    <input class="bankDetails" type="text" name="bankAccountNumber" required>
+    <input class="bankDetails" type="number" name="bankAccountNumber" required>
 
     <label class="bankDetails" for="description">IFSC code</label>
-    <input class="bankDetails" type="text" name="ifscCode" required>
+    <input class="bankDetails" type="text" name="ifscCode" required pattern="^[a-z\d]{5,12}$">
 
     <button type="submit" >Submit</button>
 </form>

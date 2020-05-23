@@ -26,6 +26,7 @@ app.listen(port, function() {
 
 //Node is now running the server on a port and serving the index html at the same port
 //No need of CORS
+//https://expressjs.com/en/starter/static-files.html
 app.use('/', express.static('frontend'))
 
 //Built in moddlweware. Converts incoming request strings into JSON object.
