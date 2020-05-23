@@ -95,7 +95,7 @@ function validateUserReq (user) {
         accountName: Joi.string().min(1).max(255).required(),
         bankName: Joi.string().min(1).max(255).required(),
         bankAccountNumber: Joi.number().required(),
-        ifscCode: Joi.string().min(1).max(255).required().regex(RegExp('/^[a-zA-Z]{4}0[a-zA-Z]{6}$/')),
+        ifscCode: Joi.string().min(1).max(255).required().regex(RegExp("^[a-zA-Z]{4}0[a-zA-Z]{6}$")),
     });
 
     return schema.validate(user);

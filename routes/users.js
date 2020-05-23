@@ -3,6 +3,8 @@ const { User, validateUserReq } = require('../models/users');
 const express = require('express');
 const router = express.Router();
 
+const _ = require('lodash');
+
 // console.log('entered the users route file');
 // router.get('/', (req, res) => {
 //     res.send('Hello World');
@@ -29,7 +31,7 @@ router.post('/', async (req, res) => {
 
     user = await user.save();
 
-    res.send(user) //Edit code to send only ID, first name and urerRole
+    res.send(_.pick(user, ['_id', 'firstName', 'userRole'])); //Edit code to send only ID, first name and userRole
 });
 
 module.exports = router;

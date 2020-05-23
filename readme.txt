@@ -1,3 +1,8 @@
+Chapter 10 - Trim response with Lodash
+1. Corrected Joi regex validation
+2. Installed Lodash
+3. Used pick method to filter out properties of the response object
+
 Chapter 9 - Add Joi Validation
 1. Install @hapi/joi library for validation of request body
 2. Create validation rules in the Model
