@@ -67,6 +67,7 @@ function sendReq(jsonString) {
     if (this.status == 200 && this.readyState == 4) {
       //document.getElementById("demo").innerHTML = this.responseText;
       console.log(this.responseText);
+      alert("User successfully created!");
     } else {
       //We do not want to tell user what error exactly - otherwise a malicious user can misuse
       //console.log(this.responseText);
