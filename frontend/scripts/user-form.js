@@ -1,6 +1,12 @@
 //console.log('hello world');
 
-const form = document.forms[0];
+const userRole = 'Project Manager';
+
+let createUserForm = document.getElementById('userForm');
+
+if (userRole === 'Mumbai Team' || userRole === 'Delhi Team') {
+  createUserForm.style.display = 'none'
+}
 
 function bankDetails() {
   //Remove Bank Details questiosn if user is of certain type
@@ -14,6 +20,7 @@ function bankDetails() {
 
     for (let element of bankElements) {
       element.style.display = 'none'
+      element.removeAttribute('required');
     }
     
     // user.bankName = undefined;
@@ -22,9 +29,13 @@ function bankDetails() {
   } else {
     for (let element of bankElements) {
       element.style.display = 'initial' //Deafult style
+      element.required = true;
     }
   }
 }
+
+
+const form = document.forms[0];
 
 //Get form data
 //https://www.valentinog.com/blog/formdata/
@@ -49,7 +60,10 @@ form.addEventListener("formdata", event => {
     console.log(key, value);
     //Using variable as object key
     //https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable
-    jsObject[key] = value;
+    if (value !== "") {
+      jsObject[key] = value;
+    }
+    
   });
   console.log('js object', jsObject);
   var jsonString = JSON.stringify(jsObject);
@@ -74,6 +88,7 @@ function sendReq(jsonString) {
     }
   };
   //Browser may display cached response received from a URL. Randomize it to get fresh data.
+  //Same URL can be used for Dev and Prod. No need to change each time.
   xhttp.open("POST", "api/users?t=" + Math.random(), true);
   //Set header
   //https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp

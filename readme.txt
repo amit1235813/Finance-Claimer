@@ -1,3 +1,11 @@
+Chapter 16 - Created current user variable. Created 9 users.
+1. Created variable to define current user
+2. Made create user form invisbile for certain users
+3. Made the form able to submit whilce creation of certain users
+4. Removed Joi validation of Bank details
+5. Removed form elements for bank details in request body - where not required
+6. No need to change any URL in prod - frontend, Express or MongoDB
+
 Chapter 15 - Deploy to Heroku post App crash
 1. URL need to be changed at 3 places
 2. MongoDB where databse is being created
