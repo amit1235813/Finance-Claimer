@@ -1,3 +1,9 @@
+Chapter 12 - Run both backend and frontend from the same port
+1. Run index html from the same port as backend code
+2. Tested creation of a user
+3. Tested user creation without CORS
+4. Uninstalled CORS
+
 Chapter 11 - Bank details not needed for certain users
 1. Added condition for Field or Sheet Columns before saving in the API
 2. Did not add Joi validation - its a condition
