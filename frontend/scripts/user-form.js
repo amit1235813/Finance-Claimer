@@ -73,7 +73,7 @@ function sendReq(jsonString) {
     }
   };
   //Browser may display cached response received from a URL. Randomize it to get fresh data.
-  xhttp.open("POST", "http://localhost:3000/api/users?t=" + Math.random(), true);
+  xhttp.open("POST", "api/users?t=" + Math.random(), true);
   //Set header
   //https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
   xhttp.setRequestHeader("Content-type", "application/json");
