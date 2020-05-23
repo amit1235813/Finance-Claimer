@@ -1,3 +1,10 @@
+Chapter 9 - Add Joi Validation
+1. Install @hapi/joi library for validation of request body
+2. Create validation rules in the Model
+3. Return error object
+4. Export validation function to the request handling API function
+5. If error is there, return syntax error in request - called 400
+
 Chapter 8 - Send request with HTML form and get response
 1. Get the form data using the JS FormData method
 2. Prevent default behaviour of form

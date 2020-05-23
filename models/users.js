@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Joi = require('@hapi/Joi');
 
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -55,7 +56,7 @@ const userSchema = new mongoose.Schema({
     bankName: {
         type: String,
         trim: true,
-        required: [true, 'Email is required'],
+        required: [true, 'Bank name is required'],
         minlength: 1,
         maxlength: 255
     },
@@ -80,6 +81,26 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('user', userSchema);
 
+function validateUserReq (user) {
+    const schema = Joi.object({
+        firstName: Joi.string().min(1).max(255).required(),
+        lastName: Joi.string().min(1).max(255).required(),
+        email: Joi.string().min(1).max(255).required().email(),
+        userRole: Joi.string().min(1).max(255).required()
+                    .valid('Project Manager',
+                    'Associate Project Manager',
+                    'Bangalore Team',
+                    'Mumbai Team',
+                    'Delhi Team'),
+        accountName: Joi.string().min(1).max(255).required(),
+        bankName: Joi.string().min(1).max(255).required(),
+        bankAccountNumber: Joi.number().required(),
+        ifscCode: Joi.string().min(1).max(255).required().regex(RegExp('/^[a-zA-Z]{4}0[a-zA-Z]{6}$/')),
+    });
+
+    return schema.validate(user);
+};
+
 /*
 const newUser = new User({
     name: 'Surbhi Garg',
@@ -99,3 +120,4 @@ newUser.save()
 */
 
 module.exports.User = User;
+module.exports.validateUserReq = validateUserReq;

@@ -43,6 +43,9 @@ function sendReq(jsonString) {
     if (this.status == 200 && this.readyState == 4) {
       //document.getElementById("demo").innerHTML = this.responseText;
       console.log(this.responseText);
+    } else {
+      //We do not want to tell user what error exactly - otherwise a malicious user can misuse
+      console.log(this.responseText);
     }
   };
   //Browser may display cached response received from a URL. Randomize it to get fresh data.

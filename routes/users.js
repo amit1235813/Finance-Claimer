@@ -1,4 +1,4 @@
-const { User } = require('../models/users');
+const { User, validateUserReq } = require('../models/users');
 
 const express = require('express');
 const router = express.Router();
@@ -10,6 +10,11 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     //Add validation
+    const { error } = validateUserReq(req.body);
+    if (error) {
+        //Joi returns a 400 bad request error - need to improve syntax of request body
+        return res.status(400).send(error.details[0].message);
+    }
     console.log('User details received by Express', req.body);
     let user = new User({
         firstName: req.body.firstName,
