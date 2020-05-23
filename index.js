@@ -4,6 +4,8 @@ const express = require('express');
 const app =  express();
 const port = 3000;
 
+const cors = require('cors');
+
 const users = require('./routes/users');
 //Example to connect to MongoDB, create a Schema and Model, create an row
 //available onMongoDB website homepage
@@ -19,6 +21,8 @@ mongoose.connect('mongodb://localhost:27017/finance-claimer')
 app.listen(port, function() {
     console.log(`Express listening on port ${port}`);
 });
+
+app.use('/', cors());
 
 //Built in moddlweware. Converts incoming request strings into JSON object.
 //For all paths.

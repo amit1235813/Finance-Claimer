@@ -1,3 +1,13 @@
+Chapter 8 - Send request with HTML form and get response
+1. Get the form data using the JS FormData method
+2. Prevent default behaviour of form
+3. Extract form data and convert ot JSON string
+4. Send JSON string to API
+5. Randomize API URL to prevent getting cached data already saved by browser for that API URL.
+6. Set HTTP Headers to JSON. SImilar to changing data type to JSON in Postman.
+7. When request status is OK and response is ready, log response
+8. Install and enable CORS to make two ports talk to each other
+
 Chapter 7 - Created a form to create a Team Mate
 1. Added a last name in the Schema, Model, API and User requirement
 2. Create a Bootstrap form

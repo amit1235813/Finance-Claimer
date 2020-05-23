@@ -10,8 +10,10 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     //Add validation
+    console.log('User details received by Express', req.body);
     let user = new User({
         firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         userRole: req.body.userRole,
         accountName: req.body.accountName,
