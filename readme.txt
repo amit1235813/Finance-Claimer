@@ -1,11 +1,19 @@
+Chapter 19 - Display users list either when link is clicked or a URL is loaded
+1. When Users link is clicked, display user list
+2. Parse response array and display name as list items
+3. When directly users URL is loaded, wait for component to render
+4. Used Mutation Observer to wait for component to render
+5. Once component is rendered, append users list
+
 Chapter 18 - Used Event Targetting to attach events to dynamically created DOM elements,
 Created API function to get all users
 1. Get all users and sort them by first name
-2. Show only specific properties
+2. Show only specific properties of user
 3. Made a link to create new user
 4. Uploading Create User Form via Template Literal
 5. Attached events to dynamically created DOM objects via Event Targetting
-6. Used change, submit and formdata event
+6. Event Targetting is used to listen on event on the parent
+7. Used change, submit and formdata event
 
 Chapter 17 - Added a router and for high performance
 1. Refined code for current user role
