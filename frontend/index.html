@@ -2,48 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HTML forms and JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Amit Saxena">
+
+    <title>IAHV Finance Claimer</title>
+
+    <!-- Bootstrap CSS only 
+    https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link href="./html/create-user-form.html" rel="import" />
+
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/module.js" type="module"></script>
+    <script src="./scripts/router.js" type="module"></script>
 </head>
 <body>
-<form id='userForm'>
-    <!-- Validation
-    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
-    <label for="name">First Name</label>
-    <input type="text" name="firstName" required autofocus minlength="1" maxlength="255">
+    <div class="row">
+        <!-- Hiding elements in Bootstrap
+        https://getbootstrap.com/docs/4.0/utilities/display/#hiding-elements -->
 
-    <label for="description">Last Name</label>
-    <input type="text" name="lastName" required minlength="1" maxlength="255">
+        <div class="d-sm-none d-md-block col-md-4">
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#users">Users</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+            </ul>
 
-    <label for="task">Email</label>
-    <input type="email" name="email" required minlength="1" maxlength="255" pattern="^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]+)(\.[a-z]+)*$">
-
-    <!-- <label for="description">User Role</label>
-    <input type="text" name="userRole" required onchange="bankDetails()"> -->
-
-    <label for="userRole">User role</label>
-
-    <select name="userRole" onchange="bankDetails()">
-        <option value="Project Manager">Project Manager</option>
-        <option value="Associate Project Manager">Associate Project Manager</option>
-        <option value="Bangalore Team">Bangalore Team</option>
-        <option value="Mumbai Team">Mumbai Team</option>
-        <option value="Delhi Team">Delhi Team</option>
-    </select>
-
-    <label class="bankDetails" for="description">Account Name</label>
-    <input class="bankDetails" type="text" name="accountName" required minlength="1" maxlength="255">
-
-    <label class="bankDetails" for="description">Bank Name</label>
-    <input class="bankDetails" type="text" name="bankName" required minlength="1" maxlength="255">
-
-    <label class="bankDetails" for="description">Account no</label>
-    <input class="bankDetails" type="number" name="bankAccountNumber" required>
-
-    <label class="bankDetails" for="description">IFSC code</label>
-    <input class="bankDetails" type="text" name="ifscCode" required pattern="^[a-z\d]{5,12}$">
-
-    <button type="submit" >Submit</button>
-</form>
+        </div>
+        <div class="col-sm-12 col-md-8" id="main">
+            
+        </div>
+        
+    </div>
 </body>
-<script src="./scripts/user-form.js"></script>
+
 </html>

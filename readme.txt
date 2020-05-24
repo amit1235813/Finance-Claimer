@@ -1,3 +1,12 @@
+Chapter 17 - Added a router and for high performance
+1. Refined code for current user role
+2. Created components to be display when a sidebar item is chosen
+3. Components are stored as Template Literals
+4. Created a router which displays these components without loading the whole page again
+5. Router matches hashed paths with components
+6. Finds the current path on load or hash change
+7. Finds the corresponding component and loads it in the DOM
+
 Chapter 16 - Created current user variable. Created 9 users.
 1. Created variable to define current user
 2. Made create user form invisbile for certain users
