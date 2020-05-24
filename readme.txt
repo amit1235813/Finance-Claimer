@@ -1,3 +1,6 @@
+Chapter 20 - 
+1. 
+
 Chapter 19 - Display users list either when link is clicked or a URL is loaded
 1. When Users link is clicked, display user list
 2. Parse response array and display name as list items
@@ -32,6 +35,8 @@ Chapter 16 - Created current user variable. Created 9 users.
 5. Removed form elements for bank details in request body - where not required
 6. No need to change any URL in prod - frontend, Express or MongoDB
 
+Deployment - Chapter 14 and 15
+
 Chapter 15 - Deploy to Heroku post App crash
 1. URL need to be changed at 3 places
 2. MongoDB where databse is being created
@@ -39,7 +44,7 @@ Chapter 15 - Deploy to Heroku post App crash
 4. Frontend URL being used to send requests - no slash in beginning
 5. White list all IP addresses in MongoDB
 6. Use absolute path for the folder to be on the safe side
-7. Tested deploy on Cercel server.
+7. Tested deploy on Vercel server.
 8. Changed name of library from @hapi/Joi to @hapi/joi - This was crashing the app.
 9. Created alert for Prod to get confirmation of user creation.
 
@@ -52,7 +57,9 @@ Chapter 14 - Deploy to Heroku
 6. Move nodemon to dev dependencies. Although, developmnet environment flag has not been created.
 7. Steps post commit - Create remote URL in Heroku. Push to remote URL.
 
-Chapter 13 - Frontend for validation in HTML
+Refine HTML form - Chapter 11, 12 and 13
+
+Chapter 13 - Frontend form validation in HTML
 1. All validation done using HTML input atrributes
 2. No JS used
 3. Attributes used - required, autofocus, minlength, maxlength, type, pattern for regex
@@ -68,6 +75,8 @@ Chapter 11 - Bank details not needed for certain users
 2. Did not add Joi validation - its a condition
 3. Remove Form Fields in HTML if value is of a certain type
 
+Refine Express API - Chapter 9 and 10
+
 Chapter 10 - Trim response with Lodash
 1. Corrected Joi regex validation
 2. Installed Lodash
@@ -79,6 +88,8 @@ Chapter 9 - Add Joi Validation
 3. Return error object
 4. Export validation function to the request handling API function
 5. If error is there, return syntax error in request - called 400
+
+HTML Form Integration - Chapter 7 and 8
 
 Chapter 8 - Send request with HTML form and get response
 1. Get the form data using the JS FormData method
@@ -95,6 +106,8 @@ Chapter 7 - Created a form to create a Team Mate
 2. Create a Bootstrap form
 3. Created CSS and JS for it - some local and some from Bootstrap CDN
 4. Mapped the fields to User Sheet
+
+Express post API - Chapter 4, 5 and 6
 
 Chapter 6 - Create API with a URL to send create user requests. Test on Postman.
 1. Create an express router object in a new file
@@ -118,6 +131,8 @@ Chapter 4 - Create an Express server to listen on a port
 2. Import or require Express
 3. Listen on a port
 4. Send back a response to test
+
+MongoDB - Chapter 1, 2 and 3
 
 Chapter 3 - Creating Schema for User Collection. Using Schema Types. Using Schema Type Options which are functions known as validators.
 1. Created User Schema
