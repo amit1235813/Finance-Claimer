@@ -5,7 +5,7 @@ function getUserReq() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.status == 200 && this.readyState == 4) {
-          let res = this.responseText;
+          var res = this.responseText;
           console.log('response status 200', this.status, this.readyState);
           //console.log(this.responseText);
           detectUserList(res);
@@ -82,6 +82,7 @@ function appendUserList (res) {
   let userArray = JSON.parse(res);
   userArray.forEach(user => {
     var node = document.createElement("li");
+    node.setAttribute('class', 'user-list-item');
     var textnode = document.createTextNode(`${user.firstName} ${user.lastName}`);
     node.appendChild(textnode);
     userList.appendChild(node);     
