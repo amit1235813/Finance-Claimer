@@ -1,3 +1,12 @@
+Chapter 18 - Used Event Targetting to attach events to dynamically created DOM elements,
+Created API function to get all users
+1. Get all users and sort them by first name
+2. Show only specific properties
+3. Made a link to create new user
+4. Uploading Create User Form via Template Literal
+5. Attached events to dynamically created DOM objects via Event Targetting
+6. Used change, submit and formdata event
+
 Chapter 17 - Added a router and for high performance
 1. Refined code for current user role
 2. Created components to be display when a sidebar item is chosen

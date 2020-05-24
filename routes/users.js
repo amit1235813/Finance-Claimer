@@ -10,6 +10,13 @@ const _ = require('lodash');
 //     res.send('Hello World');
 // });
 
+router.get('/', async (req, res) => {
+    const users = await User.find().sort('firstName');
+    console.log(users);
+    //https://stackoverflow.com/questions/37877860/lodash-pick-object-fields-from-array
+    res.send(_.map(users, _.partialRight(_.pick, ['_id', 'firstName', 'lastName', 'userRole'])));
+});
+
 router.post('/', async (req, res) => {
     //Add validation
     const { error } = validateUserReq(req.body);
