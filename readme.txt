@@ -1,5 +1,8 @@
-Chapter 20 - 
-1. 
+Chapter 20 - Used data binding of JS objects to DOM elements to send GET a single user request.
+1. When user list is created, wrap that in a href link with an href attribute
+2. Assign the required properties to the DOM elements
+3. Use these properties to create a request object
+4. When the link is clicked, send request to view the user details
 
 Chapter 19 - Display users list either when link is clicked or a URL is loaded
 1. When Users link is clicked, display user list

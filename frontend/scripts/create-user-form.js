@@ -113,6 +113,7 @@ function createUserReq(jsonString) {
   xhttp.setRequestHeader("Content-type", "application/json");
   //Send form data
   //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+  console.log('Req sent by frontend to create user', jsonString);
   xhttp.send(jsonString);
   
   }

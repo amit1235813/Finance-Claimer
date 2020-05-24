@@ -81,11 +81,24 @@ function appendUserList (res) {
   console.log(res);
   let userArray = JSON.parse(res);
   userArray.forEach(user => {
+    var hrefNode = document.createElement("a");
+    hrefNode.href = '#user-details';
     var node = document.createElement("li");
+    hrefNode.appendChild(node);
     node.setAttribute('class', 'user-list-item');
     var textnode = document.createTextNode(`${user.firstName} ${user.lastName}`);
     node.appendChild(textnode);
-    userList.appendChild(node);     
+    //Can define properties on DOM objects
+    //https://stackoverflow.com/questions/1402693/is-there-a-good-way-to-attach-javascript-objects-to-html-elements
+    node.firstName = user.firstName;
+    node.lastName = user.lastName;
+    console.log('html node', hrefNode, node.firstName);
+    userList.appendChild(hrefNode);     
+    //Bind JS objects to HTML while creating list
+    //Can access JS properties like first name and last name of each list item
+    //Bind first name to each list item
+
+    //Wrap list items in a link
   }); 
 }
 

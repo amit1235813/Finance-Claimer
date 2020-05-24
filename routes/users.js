@@ -11,17 +11,23 @@ const _ = require('lodash');
 // });
 
 router.get('/', async (req, res) => {
+    console.log('Express being called to view all users');
     const users = await User.find().sort('firstName');
     console.log(users);
     //https://stackoverflow.com/questions/37877860/lodash-pick-object-fields-from-array
     res.send(_.map(users, _.partialRight(_.pick, ['_id', 'firstName', 'lastName', 'userRole'])));
 });
 
-router.get('/:id', async (req, res) => {
-    const users = await User.find().sort('firstName');
-    console.log(users);
+router.post('/user', async (req, res) => {
+    console.log('Express being called to view details of a single user');
+    console.log('Req object received by Express to view details of a single user', req.body, req.params);
+    const user = await User.find({
+        firstName : req.body.firstName,
+        lastName : req.body.lastName
+    }).limit(1); //Get only one response
+    console.log(user);
     //https://stackoverflow.com/questions/37877860/lodash-pick-object-fields-from-array
-    res.send(_.map(users, _.partialRight(_.pick, ['_id', 'firstName', 'lastName', 'userRole'])));
+    res.send(user);
 });
 
 router.post('/', async (req, res) => {

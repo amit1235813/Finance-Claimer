@@ -1,12 +1,14 @@
 import { HomeComponent } from "./components/home-component.js";
 import { ErrorComponent } from "./components/error-component.js";
 import { UserListComponent } from "./components/user-list-component.js";
+import { UserDetailsComponent } from "./components/user-details-component.js";
 import { CreateUserComponent } from "./components/create-user-component.js";
 
 const routes = [
     { path: '', component: HomeComponent},
     { path: 'users', component: UserListComponent},
-    { path: 'create-user', component: CreateUserComponent}
+    { path: 'create-user', component: CreateUserComponent},
+    { path: 'user-details', component: UserDetailsComponent}
 ];
 
 export function parseLocation () {
