@@ -48,10 +48,10 @@ function detectUserList(res) {
           const addedNodes = Array.from(mutation.addedNodes) ;
           console.log('added nodes', addedNodes);
 
-          for (var index in addedNodes) {
-            console.log('node', addedNodes[index]);
-            console.log('node id', addedNodes[index].id);
-          }
+          // for (var index in addedNodes) {
+          //   console.log('node', addedNodes[index]);
+          //   console.log('node id', addedNodes[index].id);
+          // }
 
           //Check if children are added and a child has id of user-list
           //https://stackoverflow.com/questions/57391677/how-to-wait-until-an-element-exists-with-javascript
@@ -79,27 +79,31 @@ function detectUserList(res) {
 function appendUserList (res) {
   let userList = document.getElementById('user-list');
   console.log(res);
-  let userArray = JSON.parse(res);
-  userArray.forEach(user => {
-    var hrefNode = document.createElement("a");
-    hrefNode.href = '#user-details';
-    var node = document.createElement("li");
-    hrefNode.appendChild(node);
-    node.setAttribute('class', 'user-list-item');
-    var textnode = document.createTextNode(`${user.firstName} ${user.lastName}`);
-    node.appendChild(textnode);
-    //Can define properties on DOM objects
-    //https://stackoverflow.com/questions/1402693/is-there-a-good-way-to-attach-javascript-objects-to-html-elements
-    node.firstName = user.firstName;
-    node.lastName = user.lastName;
-    console.log('html node', hrefNode, node.firstName);
-    userList.appendChild(hrefNode);     
-    //Bind JS objects to HTML while creating list
-    //Can access JS properties like first name and last name of each list item
-    //Bind first name to each list item
 
-    //Wrap list items in a link
-  }); 
+  if (userList.childElementCount <= 1) {
+    let userArray = JSON.parse(res);
+    userArray.forEach(user => {
+      let hrefNode = document.createElement("a");
+      hrefNode.href = '#user-details';
+      let node = document.createElement("li");
+      hrefNode.appendChild(node);
+      node.setAttribute('class', 'user-list-item');
+      let textnode = document.createTextNode(`${user.firstName} ${user.lastName}`);
+      node.appendChild(textnode);
+      //Can define properties on DOM objects
+      //https://stackoverflow.com/questions/1402693/is-there-a-good-way-to-attach-javascript-objects-to-html-elements
+      node.firstName = user.firstName;
+      node.lastName = user.lastName;
+      console.log('html node', hrefNode, node.firstName);
+      userList.appendChild(hrefNode);     
+      //Bind JS objects to HTML while creating list
+      //Can access JS properties like first name and last name of each list item
+      //Bind first name to each list item
+  
+      //Wrap list items in a link
+    });
+  }
+ 
 }
 
 const users = document.getElementById('users');

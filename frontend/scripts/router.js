@@ -28,9 +28,12 @@ function router() {
     const path = parseLocation();
     console.log('path', path);
     //Add error component
-    const { component = ErrorComponent  } = findComponentByPath(path, routes) || {};
-    console.log(findComponentByPath(path, routes));
-    document.getElementById('main').innerHTML = component.render();
+    if (path !== 'edit-user') {
+        const { component = ErrorComponent  } = findComponentByPath(path, routes) || {};
+        console.log(findComponentByPath(path, routes));
+        document.getElementById('main').innerHTML = component.render();
+    }
+    
 }
 
 window.addEventListener('hashchange', router);

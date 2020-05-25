@@ -24,7 +24,8 @@ router.post('/user', async (req, res) => {
     const user = await User.find({
         firstName : req.body.firstName,
         lastName : req.body.lastName
-    }).limit(1); //Get only one response
+    }).limit(1).select('-__v'); //Get only one response
+    //Do not get version key - https://stackoverflow.com/questions/13699784/mongoose-v-property-hide/22436385
     console.log(user);
     //https://stackoverflow.com/questions/37877860/lodash-pick-object-fields-from-array
     res.send(user);

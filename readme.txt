@@ -1,4 +1,11 @@
-Chapter 20 - Used data binding of JS objects to DOM elements to send GET a single user request.
+Chapter 21 - Display received user details as HTML
+1. Get user object without MongoDB version key
+2. Create a list using the object with edit buttons
+3. Data binding created for JS objects with list elements
+4. Duplicate user list is not created if list already exists
+5. When edit button is clicked, hide text and show input element
+
+Chapter 20 - Used data binding of JS objects to DOM elements to send a single user GET request.
 1. When user list is created, wrap that in a href link with an href attribute
 2. Assign the required properties to the DOM elements
 3. Use these properties to create a request object

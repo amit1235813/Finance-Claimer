@@ -1,6 +1,8 @@
 export const UserDetailsComponent = {
     render: function() {
         return `
-        <p>User Details come here</p>`
+        <div id="edit-user">
+        <p>User Details come here</p>
+        </div>`
     }
 }
