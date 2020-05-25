@@ -94,4 +94,18 @@ router.put('/user', async(req, res) => {
     res.send(user);
 });
 
+router.delete('/user', async(req, res) => {
+    console.log('Reached Express Delete function to delete user details');
+    const user = await User.deleteOne({
+        firstName : req.query.p1,
+        lastName : req.query.p2
+    });
+
+    if (!user) {
+        return res.status(404).send('The user with the given ID was not found');
+    }
+
+    res.send(user);
+})
+
 module.exports = router;

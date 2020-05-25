@@ -1,3 +1,10 @@
+Chapter 27 - Created Delete user API and integrated with frontend
+1. Created API to delete user by ID
+2. Created Delete button for each user when User List is created in DOM
+3. When delete button is clicked, ask for confirmation
+4. Parse user name to send as query parameters
+5. Delete user based on first name and last name
+
 Chapter 26 - Integrated Edit User frontend with backend API
 1. Changed submit method to click - prevents URL change
 2. Send request to edit user

@@ -24,6 +24,17 @@ function getUserReq() {
           let textnode = document.createTextNode(`${object.firstName} ${object.lastName}`);
           listItem.appendChild(textnode);
           list.appendChild(hrefNode); 
+
+          //Create delete button
+          let deleteButton = document.createElement('button');
+          let buttonId = `${object.firstName}${object.lastName}`;
+          // deleteButton.setAttribute('id', buttonId);
+          deleteButton.setAttribute('class', 'delete-user-button');
+          let textnode2 = document.createTextNode('Delete');
+          deleteButton.appendChild(textnode2);
+          list.appendChild(deleteButton); 
+          //Store ID in browser
+          // sessionStorage.setItem(buttonId, object._id);
         });
         //mainDiv.innerHTML = resArray;
       
@@ -34,7 +45,7 @@ function getUserReq() {
       }
   };
 
-  xhttp.open("GET", "api/users?t=" + Math.random(), true);
+  xhttp.open("GET", "api/users?m=" + Math.random(), true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send();
 };
@@ -45,9 +56,9 @@ export let textArray;
 
 let mainDiv = document.getElementById('main');
 mainDiv.addEventListener("click", function(event) {
-  event.preventDefault();
   console.log('user name clicked', event.target);
   if (event.target && event.target.className === 'user-list-item') {
+    event.preventDefault();
     console.log('on user name click', event.target);
     //let href = event.target.getAttribute("href");
     //console.log('user details original href', href);
@@ -62,8 +73,65 @@ mainDiv.addEventListener("click", function(event) {
     //window.open(location.href);
 
   }
-  
+
 })
+
+function deleteUserReq(queryParams) {
+  console.log('delete user req initiated');
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.status == 200 && this.readyState == 4) {
+        let resString = this.responseText;
+        let resArray = JSON.parse(resString);
+        console.log('view user - type of res', typeof(res), resArray);
+        console.log('response status 200', this.status, this.readyState);
+        alert('Details of Team Mate successfully deleted. Moving back to list of Team Mates');
+        location.href = '/users.html';
+      } else if (this.readyState !== 4) {
+        //We do not want to tell user what error exactly - otherwise a malicious user can misuse
+        //console.log(this.responseText);
+        console.log('response status not 200', this.status, this.readyState);
+        
+      } else if (this.status !== 200) {
+        alert('User details could not be deleted');
+      }
+  };
+
+  xhttp.open("DELETE", "api/users/user" + queryParams, true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send();
+}
+
+mainDiv.addEventListener("click", function(event) {
+  if (event.target && event.target.className === 'delete-user-button') {
+    console.log('user name clicked', event.target);
+    console.log('on delete button click', event.target);
+    //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_confirm
+    confirm('All details of Team Mate will be deleted. Would you like to contunue?');
+    let textContent = event.target.previousSibling.firstChild.textContent;
+    textArray = textContent.split(' ');
+    let queryParams = '?p1=' + textArray[0] + '&p2=' + textArray[1];
+    deleteUserReq(queryParams);
+  }
+
+})
+
+
+
+// else if (event.target && event.target.className === 'delete-user-button') {
+//   // localStorage.getItem()
+//   console.log('on delete button click', event.target);
+//   let textContent = event.target.textContent;
+//   textArray = textContent.split(' ');
+// }
+
+//Create user delete API
+//Create user delete button
+//Create dom id
+//Store ID for each button as local storage
+//Corresponf key to dom id
+//When button is clicked, ask confirmation 
+//get dom id, send user ID to API
 
 // import {parseLocation} from './router.js';
 
