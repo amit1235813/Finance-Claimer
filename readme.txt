@@ -1,3 +1,12 @@
+Refactored the code to simple HTML or VanillaJS - Chapters 22 to 28
+Created API and frontend to view all users, view single user details,
+create new user, edit a user and delete a user
+
+Chapter 28 - Deploy Simple HTML with Users API and frontend
+1. Commit changes
+2. Deploy to Heroku
+3. Deploy to Vercel
+
 Chapter 27 - Created Delete user API and integrated with frontend
 1. Created API to delete user by ID
 2. Created Delete button for each user when User List is created in DOM
@@ -39,6 +48,9 @@ Chapter 22 - Refactoring the code in simple HTML (New Branch)
 3. Creating own Router, Mutation Object, Data Binding is heavy JavaScript
 4. Creating each HTML element is JavaScript is time consuming
 5. Create simple index HTML file with CSS attached
+
+Framework Simulation is Vanilla JS - Chapters 16 to 21
+Routing, Template Literals, Mutation Observers, Event Targetting and Data Binding
 
 Chapter 21 - Display received user details as HTML
 1. Get user object without MongoDB version key
