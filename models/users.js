@@ -94,10 +94,14 @@ function validateUserReq (user) {
                     'Bangalore Team',
                     'Mumbai Team',
                     'Delhi Team'),
+                    accountName: Joi.any(),
+                    bankName: Joi.any(),
+                    bankAccountNumber: Joi.any(),
+                    ifscCode: Joi.any()
         // accountName: Joi.string().min(1).max(255),
         // bankName: Joi.string().min(1).max(255),
         // bankAccountNumber: Joi.number(),
-        // ifscCode: Joi.string().min(1).max(255).regex(RegExp("^[a-zA-Z]{4}0[a-zA-Z]{6}$")),
+        // ifscCode: Joi.string().min(1).max(255).regex(RegExp("^[a-zA-Z]{4}0[a-zA-Z\d]{6}$")),
     });
 
     return schema.validate(user);

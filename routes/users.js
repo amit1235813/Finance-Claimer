@@ -64,13 +64,14 @@ router.post('/', async (req, res) => {
     res.send(_.pick(user, ['_id', 'firstName', 'userRole'])); //Edit code to send only ID, first name and userRole
 });
 
-router.put('/:id', async(req, res) => {
+router.put('/user', async(req, res) => {
+    console.log('Reached Express Put function to edit user details');
     const { error } = validateUserReq(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
     console.log('User details received by Express - edit', req.body);
-    const user = await User.findByIdAndUpdate(req.params.id, {
+    const user = await User.findByIdAndUpdate({ _id: req.query.p1}, {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,

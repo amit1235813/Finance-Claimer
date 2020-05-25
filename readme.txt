@@ -1,3 +1,11 @@
+Chapter 25 - Created Edit User Form with events
+1. Edited Joi to allow for bank details for specific users
+2. Created find by ID and update API for user
+3. Tested via Postman
+4. Created edit user form
+5. Parsed response object to values in edit user form
+6. Created listeners to detect change, sumbit and formdata events for Edit User Form.
+
 Chapter 24 - GET user details response object
 1. Wrap user list in links
 2. When link is clicked, parse the text content and add to URL

@@ -5,7 +5,7 @@
 // console.log('name of user to show detail for', textArray);
 
 function getUserReq() {
-  console.log('get users detailsreq initiated');
+  console.log('get users details req initiated');
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
       if (this.status == 200 && this.readyState == 4) {
@@ -16,10 +16,21 @@ function getUserReq() {
         console.log('response status 200', this.status, this.readyState);
         console.log(this.responseText);
 
-        let list = document.getElementById('user-details');
-
-        for (key in resObject) {
-
+        //let list = document.getElementById('user-details');
+        //For input field in form
+        //Set value with same property in object
+        let form = document.getElementById('edit-user-form').elements;
+        console.log('edit user form', form);
+        for (let element in form) {
+          console.log('element', form[element]);
+          for (let key in resObject) {
+            if (form[element].name && form[element].name === key) {
+              form[element].value = resObject[key];
+            }
+            if (key === '_id') {
+              localStorage.setItem('_id', resObject[key]);
+            }
+          }
         }
         
           // console.log('first name', object.firstName);
@@ -65,8 +76,126 @@ function getUserReq() {
   xhttp.send();
 };
 
+const form = document.getElementById('edit-user-form');
+
+form.addEventListener('change', function (event) {
+  console.log('change in main div');
+  console.log(event.target, event.target.id);
+  if (event.target && event.target.id === 'userRole') {
+      
+      //Remove Bank Details questions if user is of certain type
+      //console.log('Input value changing');
+      let userRole = document.getElementsByName('userRole')[0].value;
+      //console.log(userRole);
+      let bankElements = document.getElementsByClassName('bankDetails');
+      //console.log(bankElements);
+
+      if (userRole === 'Mumbai Team' ||  userRole === 'Delhi Team') {
+
+          for (let element of bankElements) {
+              element.style.display = 'none'
+              element.removeAttribute('required');
+          }
+      } else {
+          for (let element of bankElements) {
+              element.style.display = 'initial' //Deafult style
+              element.required = true;
+          }
+      }
+
+  }
+});
+
+form.addEventListener("submit", function(event) {
+  console.log('edit form submitted', event.target);
+  if (event.target && event.target.id === 'edit-user-button') {
+      event.preventDefault();
+      new FormData(form);
+  }
+  
+});
+
+form.addEventListener("formdata", event => {
+  console.log('edit form data available to use', event.target);
+  if (event.target && event.target.id === 'edit-user-form') {
+      event.preventDefault();
+      const data = event.formData;
+      console.log(data);
+      // get the data
+      const entries = [...data.entries()];
+      console.log(entries);
+
+      var jsObject = {};
+      entries.forEach(function(entry) {
+          var key = entry[0];
+          console.log(typeof(key));
+          var value = entry[1];
+          console.log(key, value);
+          if (value !== "") {
+              jsObject[key] = value;
+          }
+
+      });
+
+      console.log('js object', jsObject);
+      var jsonString = JSON.stringify(jsObject);
+      console.log('json string', jsonString);
+      const values = [...data.values()];
+      console.log(values);
+
+      editUserReq(jsonString);
+
+  }
+  
+});
+
+function editUserReq(jsonString) {
+  console.log('edit users details req initiated');
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.status == 200 && this.readyState == 4) {
+        let resString = this.responseText;
+        let resArray = JSON.parse(resString);
+        let resObject = resArray[0];
+        console.log('edit user details - type of res', typeof(res));
+        console.log('response status 200', this.status, this.readyState);
+        console.log(this.responseText);
+
+        let form = document.getElementById('edit-user-form').elements;
+        console.log('edit user form', form);
+        for (let element in form) {
+          console.log('element', form[element]);
+          for (let key in resObject) {
+            if (form[element].name && form[element].name === key) {
+              form[element].value = resObject[key];
+            }
+          }
+        }
+      
+      } else {
+        //We do not want to tell user what error exactly - otherwise a malicious user can misuse
+        //console.log(this.responseText);
+        console.log('response status not 200', this.status, this.readyState);
+      }
+  };
+  let _id = localStorage.getItem('_id');
+  console.log('id being sent to edit user', _id);
+  console.log('user details location', location.pathname, location.search);
+  xhttp.open("PUT", "api/users/user?p1=" + _id + '&m=' + Math.random(), true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send();
+  localStorage.removeItem('_id');
+}
+
 window.addEventListener('load', getUserReq);
 
+//Edit user details
+//ID is received
+//Save it in localstorage
+//If edit is clicked, use it and delete it
+//Find object by that id
+//Update specific value
+//Load fresh user details - code already there
 
 // import {parseLocation} from './router.js';
 
