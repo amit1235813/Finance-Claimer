@@ -1,3 +1,10 @@
+Chapter 24 - GET user details response object
+1. Wrap user list in links
+2. When link is clicked, parse the text content and add to URL
+3. When new page loads, get the seacrh parameters
+4. Use the seacrh parameters in GET a specific user request
+5. Returns a response object with user details
+
 Chapter 23 - Refactor frontend of View Users API
 1. Created users HTML file to view user list
 2. Incorporated CSS folder in Express static folder

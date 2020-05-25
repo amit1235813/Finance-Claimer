@@ -3,3 +3,7 @@ div#sidebar {
     width: 20%;
     height: 100vh;
 }
+
+div#main {
+    height: 100vh;
+}

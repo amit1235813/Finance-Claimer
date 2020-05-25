@@ -18,12 +18,12 @@ router.get('/', async (req, res) => {
     res.send(_.map(users, _.partialRight(_.pick, ['_id', 'firstName', 'lastName', 'userRole'])));
 });
 
-router.post('/user', async (req, res) => {
+router.get('/user', async (req, res) => {
     console.log('Express being called to view details of a single user');
     console.log('Req object received by Express to view details of a single user', req.body, req.params);
     const user = await User.find({
-        firstName : req.body.firstName,
-        lastName : req.body.lastName
+        firstName : req.query.p1,
+        lastName : req.query.p2
     }).limit(1).select('-__v'); //Get only one response
     //Do not get version key - https://stackoverflow.com/questions/13699784/mongoose-v-property-hide/22436385
     console.log(user);

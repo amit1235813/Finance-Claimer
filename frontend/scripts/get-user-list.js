@@ -9,17 +9,21 @@ function getUserReq() {
         console.log('response status 200', this.status, this.readyState);
         //console.log(this.responseText);
         //detectUserList(res);
-        const mainDiv = document.getElementById('main');
+        //const mainDiv = document.getElementById('main');
         //For each object, get property and store in li with same ID
         let list = document.getElementById('user-list');
         resArray.forEach(object => {
           console.log('first name', object.firstName);
           console.log('last name', object.lastName);
-          
+
+          let hrefNode = document.createElement("a");
+          hrefNode.href = 'user-details.html';
           let listItem = document.createElement('li');
+          listItem.setAttribute('class', 'user-list-item');
+          hrefNode.appendChild(listItem);
           let textnode = document.createTextNode(`${object.firstName} ${object.lastName}`);
           listItem.appendChild(textnode);
-          list.appendChild(listItem); 
+          list.appendChild(hrefNode); 
         });
         //mainDiv.innerHTML = resArray;
       
@@ -36,6 +40,30 @@ function getUserReq() {
 };
 
 window.addEventListener('load', getUserReq);
+
+export let textArray;
+
+let mainDiv = document.getElementById('main');
+mainDiv.addEventListener("click", function(event) {
+  event.preventDefault();
+  console.log('user name clicked', event.target);
+  if (event.target && event.target.className === 'user-list-item') {
+    console.log('on user name click', event.target);
+    //let href = event.target.getAttribute("href");
+    //console.log('user details original href', href);
+    let textContent = event.target.textContent;
+    textArray = textContent.split(' ');
+
+    console.log('user details href', location.href);
+    location.href = 'user-details.html' + '?p1=' + textArray[0] + '&p2=' + textArray[1];
+    //change href
+    //location.href = 'user-details.html';
+    //pass data to next file to send as object - reload wont have data??
+    //window.open(location.href);
+
+  }
+  
+})
 
 // import {parseLocation} from './router.js';
 
@@ -102,10 +130,10 @@ window.addEventListener('load', getUserReq);
 //   if (userList.childElementCount <= 1) {
 //     let userArray = JSON.parse(res);
 //     userArray.forEach(user => {
-//       let hrefNode = document.createElement("a");
-//       hrefNode.href = '#user-details';
-//       let node = document.createElement("li");
-//       hrefNode.appendChild(node);
+      // let hrefNode = document.createElement("a");
+      // hrefNode.href = '#user-details';
+      // let node = document.createElement("li");
+      // hrefNode.appendChild(node);
 //       node.setAttribute('class', 'user-list-item');
 //       let textnode = document.createTextNode(`${user.firstName} ${user.lastName}`);
 //       node.appendChild(textnode);
