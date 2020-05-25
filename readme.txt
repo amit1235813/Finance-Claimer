@@ -1,3 +1,10 @@
+Chapter 22 - Refactoring the code in simple HTML (New Branch)
+1. Moving to branch simple-html-branch
+2. Angular and even Vue is too heavy
+3. Creating own Router, Mutation Object, Data Binding is heavy JavaScript
+4. Creating each HTML element is JavaScript is time consuming
+5. Create simple index HTML file with CSS attached
+
 Chapter 21 - Display received user details as HTML
 1. Get user object without MongoDB version key
 2. Create a list using the object with edit buttons
