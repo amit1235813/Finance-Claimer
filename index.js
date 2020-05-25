@@ -40,6 +40,8 @@ app.use('/', compression());
 //No need of CORS
 //https://expressjs.com/en/starter/static-files.html
 //https://nodejs.org/api/path.html#path_path
+app.use('/', express.static(path.join(__dirname, 'frontend/html')));
+//To allow CSS folder to be under static files. Cannot find above and looks here.
 app.use('/', express.static(path.join(__dirname, 'frontend')));
 
 //Built in moddlweware. Converts incoming request strings into JSON object.

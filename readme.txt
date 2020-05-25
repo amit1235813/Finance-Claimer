@@ -1,3 +1,9 @@
+Chapter 23 - Refactor frontend of View Users API
+1. Created users HTML file to view user list
+2. Incorporated CSS folder in Express static folder
+3. Sent HTTP request and received response
+4. Display received response as list
+
 Chapter 22 - Refactoring the code in simple HTML (New Branch)
 1. Moving to branch simple-html-branch
 2. Angular and even Vue is too heavy
