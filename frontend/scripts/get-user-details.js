@@ -106,7 +106,7 @@ form.addEventListener('change', function (event) {
   }
 });
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("click", function(event) {
   console.log('edit form submitted', event.target);
   if (event.target && event.target.id === 'edit-user-button') {
       event.preventDefault();
@@ -149,33 +149,28 @@ form.addEventListener("formdata", event => {
   
 });
 
+var href;
 function editUserReq(jsonString) {
   console.log('edit users details req initiated');
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-      if (this.status == 200 && this.readyState == 4) {
+      if (this.status === 200 && this.readyState === 4) {
         let resString = this.responseText;
         let resArray = JSON.parse(resString);
         let resObject = resArray[0];
         console.log('edit user details - type of res', typeof(res));
         console.log('response status 200', this.status, this.readyState);
         console.log(this.responseText);
-
-        let form = document.getElementById('edit-user-form').elements;
-        console.log('edit user form', form);
-        for (let element in form) {
-          console.log('element', form[element]);
-          for (let key in resObject) {
-            if (form[element].name && form[element].name === key) {
-              form[element].value = resObject[key];
-            }
-          }
-        }
+        alert('Details of Team Mate successfully edited. Moving back to list of Team Mates');
+        location.href = '/users.html';
       
-      } else {
+      } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
-        //console.log(this.responseText);
+        console.log(this.responseText);
         console.log('response status not 200', this.status, this.readyState);
+        
+      } else if (this.status !== 200) {
+        alert('User details could not be edited');
       }
   };
   let _id = localStorage.getItem('_id');
@@ -183,8 +178,11 @@ function editUserReq(jsonString) {
   console.log('user details location', location.pathname, location.search);
   xhttp.open("PUT", "api/users/user?p1=" + _id + '&m=' + Math.random(), true);
   xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send();
+  xhttp.send(jsonString);
   localStorage.removeItem('_id');
+  href = location.href;
+  console.log('breakpoint');
+
 }
 
 window.addEventListener('load', getUserReq);

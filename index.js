@@ -17,12 +17,13 @@ const users = require('./routes/users');
 //https://mongoosejs.com/
 //mongoose.connect('mongodb://localhost:27017/finance-claimer')
 mongoose.connect('mongodb+srv://amit1235813:21345589@database-cluster-w5nwu.mongodb.net/finance-claimer?retryWrites=true&w=majority')
-
 //Returns a Promise which is handled using then and catch
     .then(() => console.log('Connected to MongoDB...'))
     .catch(error => {
         console.log('Could not connect to MongoDB...', error);
     });
+
+mongoose.set('useFindAndModify', false);
 
 
 app.listen(port, function() {

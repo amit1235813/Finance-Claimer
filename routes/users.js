@@ -71,15 +71,17 @@ router.put('/user', async(req, res) => {
         return res.status(400).send(error.details[0].message);
     }
     console.log('User details received by Express - edit', req.body);
-    const user = await User.findByIdAndUpdate({ _id: req.query.p1}, {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        userRole: req.body.userRole,
-        accountName: req.body.accountName,
-        bankName: req.body.bankName,
-        bankAccountNumber: req.body.bankAccountNumber,
-        ifscCode: req.body.ifscCode
+    const user = await User.findByIdAndUpdate(req.query.p1, {
+        $set: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            userRole: req.body.userRole,
+            accountName: req.body.accountName,
+            bankName: req.body.bankName,
+            bankAccountNumber: req.body.bankAccountNumber,
+            ifscCode: req.body.ifscCode
+        }
     }, {
         new: true //Shows the object in res after the update is applied
         //https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate

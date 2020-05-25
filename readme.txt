@@ -1,3 +1,10 @@
+Chapter 26 - Integrated Edit User frontend with backend API
+1. Changed submit method to click - prevents URL change
+2. Send request to edit user
+3. Changed deprecated mongoose settings globally - called useFindAndModify
+4. If editing is successful, show alert and redirect to users list
+5. If editing failed, show alert and stay on page
+
 Chapter 25 - Created Edit User Form with events
 1. Edited Joi to allow for bank details for specific users
 2. Created find by ID and update API for user
