@@ -7,6 +7,8 @@ const app =  express();
 const port = process.env.PORT || 3000;
 const path = require('path');
 
+const error = require('./middleware/error');
+
 const helmet = require('helmet');
 const compression = require('compression');
 //const cors = require('cors');
@@ -52,7 +54,7 @@ app.use('/', express.json());
 //All Epxress API path start with a slash
 app.use('/api/users', users);
 
-
+app.use('/', error);
 
 //Hello World example available on
 //http://expressjs.com/en/starter/hello-world.html

@@ -2,7 +2,7 @@ const { User, validateUserReq } = require('../models/users');
 
 const express = require('express');
 const router = express.Router();
-
+require('express-async-errors');
 const _ = require('lodash');
 
 // console.log('entered the users route file');

@@ -1,3 +1,8 @@
+Chapter 29 -
+1. Installed ansyc-express-errors to run try ctach on all CRUD functions
+2. Installed Winston to log errors in a file
+
+
 Refactored the code to simple HTML or VanillaJS - Chapters 22 to 28
 Created API and frontend to view all users, view single user details,
 create new user, edit a user and delete a user
