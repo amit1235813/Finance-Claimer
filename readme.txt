@@ -1,3 +1,11 @@
+Chapter 31 - Refactoring Users API
+1. Merged simple-html-branch with master before deploying to Heroku in last Chapter
+2. Refactored code to move all HTML files related to Users in a folder
+3. Changed links in HTML files
+4. Changed links in JS files
+5. Tested all 5 User API
+
+
 Chapter 30 - Fix bugs for Edit User form
 1. Bug fix: Hide Bank Details for certain users
 2. Bug fix: Bank details cannot be empty for certain users
@@ -6,7 +14,7 @@ Chapter 30 - Fix bugs for Edit User form
 4. Deploy to Heroku and Vercel
 
 Chapter 29 - Added Bank Details validation to Create User Form
-1. Installed ansyc-express-errors to run try ctach on all CRUD functions
+1. Installed async-express-errors to run try ctach on all CRUD functions
 2. Installed Winston to log errors in a file
 3. Commented out above code
 4. Documented HTML and JS code. Created a Flowchart to understand in Diagrams.

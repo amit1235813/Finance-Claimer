@@ -87,7 +87,7 @@ function validateUserReq (user) {
     const schema = Joi.object({
         firstName: Joi.string().min(1).max(255).required(),
         lastName: Joi.string().min(1).max(255).required(),
-        email: Joi.string().min(1).max(255).required().email(),
+        email: Joi.string().min(1).max(255).required(),
         userRole: Joi.string().min(1).max(255).required()
                     .valid('Project Manager',
                     'Associate Project Manager',

@@ -28,6 +28,7 @@ mongoose.connect('mongodb+srv://amit1235813:21345589@database-cluster-w5nwu.mong
 mongoose.set('useFindAndModify', false);
 
 
+const server = 
 app.listen(port, function() {
     console.log(`Express listening on port ${port}`);
 });
@@ -52,7 +53,7 @@ app.use('/', express.static(path.join(__dirname, 'frontend')));
 app.use('/', express.json());
 //To use a middleware function at a specific path
 //All Epxress API path start with a slash
-app.use('/api/users', users);
+app.use('/users/api', users);
 
 app.use('/', error);
 
@@ -66,3 +67,5 @@ app.get('/', (req, res) => {
 */
 
 //console.log(User);
+
+module.exports = server;

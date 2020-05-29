@@ -49,7 +49,7 @@ function getUserReq() {
       }
   };
 
-  xhttp.open("GET", "api/users?m=" + Math.random(), true);
+  xhttp.open("GET", "api?m=" + Math.random(), true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send();
 };
@@ -93,7 +93,7 @@ function deleteUserReq(queryParams) {
         console.log('view user - type of res', typeof(res), resArray);
         console.log('response status 200', this.status, this.readyState);
         alert('Details of Team Mate successfully deleted. Moving back to list of Team Mates');
-        location.href = '/users-list.html';
+        location.href = 'users-list.html';
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
         //console.log(this.responseText);
@@ -104,7 +104,7 @@ function deleteUserReq(queryParams) {
       }
   };
 
-  xhttp.open("DELETE", "api/users/user" + queryParams, true);
+  xhttp.open("DELETE", "api/" + queryParams, true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send();
 }
@@ -118,7 +118,7 @@ mainDiv.addEventListener("click", function(event) {
     confirm('All details of Team Mate will be deleted. Would you like to contunue?');
     let textContent = event.target.previousSibling.firstChild.textContent;
     textArray = textContent.split(' ');
-    let queryParams = '?p1=' + textArray[0] + '&p2=' + textArray[1];
+    let queryParams = 'user?p1=' + textArray[0] + '&p2=' + textArray[1];
     deleteUserReq(queryParams);
   }
 

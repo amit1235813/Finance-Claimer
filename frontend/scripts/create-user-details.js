@@ -131,7 +131,7 @@ function createUserReq(jsonString) {
         console.log('response status 200', this.status, this.readyState);
         console.log(this.responseText);
         alert('Details of Team Mate successfully created. Moving back to list of Team Mates');
-        location.href = '/users-list.html';
+        location.href = 'users-list.html';
       
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
@@ -143,7 +143,7 @@ function createUserReq(jsonString) {
       }
   };
   console.log('user details location', location.pathname, location.search);
-  xhttp.open("POST", "api/users" + '?m=' + Math.random(), true);
+  xhttp.open("POST", "api" + '?m=' + Math.random(), true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(jsonString);
   href = location.href;

@@ -84,7 +84,7 @@ function getUserDetailsReq() {
       }
   };
   console.log('user details location', location.pathname, location.search);
-  xhttp.open("GET", "api/users/user" + location.search + '&m=' + Math.random(), true);
+  xhttp.open("GET", "api/user" + location.search + '&m=' + Math.random(), true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send();
 };
@@ -187,12 +187,12 @@ function editUserReq(jsonString) {
         console.log('response status 200', this.status, this.readyState);
         console.log(this.responseText);
         alert('Details of Team Mate successfully edited. Moving back to list of Team Mates');
-        location.href = '/users-list.html';
+        location.href = 'users-list.html';
       
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
         console.log(this.responseText);
-        console.log('response status not 200', this.status, this.readyState);
+        console.log('response status not 200', this.status, this.statusText, this.readyState);
         
       } else if (this.status !== 200) {
         alert('User details could not be edited');
@@ -201,7 +201,7 @@ function editUserReq(jsonString) {
   let _id = localStorage.getItem('_id');
   console.log('id being sent to edit user', _id);
   console.log('user details location', location.pathname, location.search);
-  xhttp.open("PUT", "api/users/user?p1=" + _id + '&m=' + Math.random(), true);
+  xhttp.open("PUT", "api/user?p1=" + _id + '&m=' + Math.random(), true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(jsonString);
   localStorage.removeItem('_id');
