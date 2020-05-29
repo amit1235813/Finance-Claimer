@@ -62,7 +62,7 @@ export function areBankDetailsValid() {
       if (accountName.length === 0 || bankName.length === 0 || accountNumber.length === 0 || ifscCode.length === 0) {
         alert('All bank details need to be filled for this user');
         return false;
-      }
+      } else { return true;}
     } else { return true;}
   }
   

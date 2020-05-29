@@ -1,3 +1,10 @@
+Chapter 30 - Fix bugs for Edit User form
+1. Bug fix: Hide Bank Details for certain users
+2. Bug fix: Bank details cannot be empty for certain users
+3. Detect chang ein user role to toggle bank details display
+4. Clean code for Create User Form based on above
+4. Deploy to Heroku and Vercel
+
 Chapter 29 - Added Bank Details validation to Create User Form
 1. Installed ansyc-express-errors to run try ctach on all CRUD functions
 2. Installed Winston to log errors in a file

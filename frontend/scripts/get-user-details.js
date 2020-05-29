@@ -1,3 +1,4 @@
+import {areBankDetailsValid} from './create-user-validation.js';
 //Gets user details when a URL is loaded
 //URL is loaded when a user name is clicked
 //Fills the user details in a form
@@ -27,8 +28,23 @@ function getUserDetailsReq() {
             if (key === '_id') {
               localStorage.setItem('_id', resObject[key]);
             }
+            
           }
         }
+
+        //For certain users, remove bankdetail options
+        let userRole = document.getElementById('userRole').value;
+        if (userRole === 'Delhi Team' || userRole === 'Mumbai Team') {
+          let bankInputs = document.getElementsByClassName('bankDetails');
+          // console.log('bank inputs array', bankInputs);
+          //Deleting a live list
+          //https://stackoverflow.com/questions/23988982/removing-htmlcollection-elements-from-the-dom
+          for (let i = bankInputs.length - 1; i>=0; --i) {
+            // console.log('bank input', bankInput);
+            bankInputs[i].style.display = 'none';
+          }
+        }
+
         
           // console.log('first name', object.firstName);
           // console.log('last name', object.lastName);
@@ -110,8 +126,11 @@ form.addEventListener('change', function (event) {
 form.addEventListener("click", function(event) {
   console.log('edit form submitted', event.target);
   if (event.target && event.target.id === 'edit-user-button') {    
-      event.preventDefault();
+    event.preventDefault();
+    if (areBankDetailsValid()) {
+      console.log('bank details valid - user can be edited');
       new FormData(form);
+    }
   }
   
 });

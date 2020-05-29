@@ -31,9 +31,9 @@ if (userRole !== 'Bangalore Team' ) {
 form.addEventListener("click", function(event) {
   console.log('create form button clicked', event.target);
   if (event.target && event.target.id === 'create-user-button') {
+    event.preventDefault(); //This is not being executed due to error in bank validation logic.
     if (areBankDetailsValid()) {
-        console.log('bank details are not empty');
-        event.preventDefault(); //This is not being executed due to error in bank validation logic.
+        console.log('bank details are not empty');    
         //Causing redirect.
         new FormData(form);
         // if (pristineForm.validate()) {

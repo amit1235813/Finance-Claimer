@@ -45,16 +45,16 @@
                 </select>
             
                 <label class="bankDetails" for="description">Account Name</label>
-                <input class="bankDetails" type="text" name="accountName" required minlength="1" maxlength="255">
+                <input class="bankDetails bankDetailsInput" type="text" name="accountName" required minlength="1" maxlength="255">
             
                 <label class="bankDetails" for="description">Bank Name</label>
-                <input class="bankDetails" type="text" name="bankName" required minlength="1" maxlength="255">
+                <input class="bankDetails bankDetailsInput" type="text" name="bankName" required minlength="1" maxlength="255">
             
                 <label class="bankDetails" for="description">Account no</label>
-                <input class="bankDetails" type="number" name="bankAccountNumber" required>
+                <input class="bankDetails bankDetailsInput" type="number" name="bankAccountNumber" required>
             
                 <label class="bankDetails" for="description">IFSC code</label>
-                <input class="bankDetails" type="text" name="ifscCode" required pattern="^[a-zA-Z]{4}0[a-zA-Z\d]{6}$">
+                <input class="bankDetails bankDetailsInput" type="text" name="ifscCode" required pattern="^[a-zA-Z]{4}0[a-zA-Z\d]{6}$">
             
                 <button id="edit-user-button">Edit user</button>
             </form>
@@ -62,5 +62,5 @@
         </div>
     </div>
 </body>
-    <script src="../scripts/get-user-details.js"></script>
+    <script src="../scripts/get-user-details.js" type="module"></script>
 </html>
