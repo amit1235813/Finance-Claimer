@@ -1,7 +1,10 @@
-Chapter 29 -
+Chapter 29 - Added Bank Details validation to Create User Form
 1. Installed ansyc-express-errors to run try ctach on all CRUD functions
 2. Installed Winston to log errors in a file
-
+3. Commented out above code
+4. Documented HTML and JS code. Created a Flowchart to understand in Diagrams.
+5. Added bank detail removal for certain users in create user form
+6. Bug fix: Do not allow certain users to be created if bank details are empty
 
 Refactored the code to simple HTML or VanillaJS - Chapters 22 to 28
 Created API and frontend to view all users, view single user details,

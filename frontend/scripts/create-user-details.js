@@ -1,28 +1,62 @@
-//console.log('hello world');
-
+import {areBankDetailsValid} from './create-user-validation.js';
+// import {Pristiner} from './lib/pristine.js';
+//Simulates login
 const userRole = 'Bangalore Team';
 
 let form = document.getElementById('create-user-form');
+// create the Pristine form instance
+//Dont call new
+// console.log(Pristiner());
+// let pristineForm = new Pristine(form);
+// let formButton = document.getElementById('create-user-button');
 
 if (userRole !== 'Bangalore Team' ) {
   form.style.display = 'none'
 }
 
+//Prevent redirect outside the scope of JavaScript
+//https://stackoverflow.com/questions/8238727/how-to-prevent-ajax-requests-to-follow-redirects-using-jquery
+
+//Validate form when submitted
+//But do not use form action url - use click
+//Both trigger togther - click doesnt care about form validation
+//GOes ahead to submit it
+//Submit doesnt 
+// form.addEventListener('submit', function(event) {
+//   console.log('create user form submitted');
+//   event.preventDefault();
+// });
+
+//When form button us clicked, create form data
 form.addEventListener("click", function(event) {
-  console.log('create form submitted', event.target);
+  console.log('create form button clicked', event.target);
   if (event.target && event.target.id === 'create-user-button') {
-      event.preventDefault();
-      new FormData(form);
+    if (areBankDetailsValid()) {
+        console.log('bank details are not empty');
+        event.preventDefault(); //This is not being executed due to error in bank validation logic.
+        //Causing redirect.
+        new FormData(form);
+        // if (pristineForm.validate()) {
+        //   console.log('form validation', pristineForm.validate());
+        //   new FormData(form);
+        // }
+        // console.log('formdata', data);
+        // // get the data
+        // const entries = [...data.entries()];
+        // console.log(entries);
+      }
   }
-  
 });
 
+
+//If form data is created, create a request object
+//Call the create user function
 form.addEventListener("formdata", event => {
   console.log('create form data available to use', event.target);
   if (event.target && event.target.id === 'create-user-form') {
       event.preventDefault();
       const data = event.formData;
-      console.log(data);
+      console.log('formdata', data);
       // get the data
       const entries = [...data.entries()];
       console.log(entries);
@@ -51,12 +85,45 @@ form.addEventListener("formdata", event => {
   
 });
 
+//Removes Bank Details for certain users
+form.addEventListener('change', function (event) {
+  console.log('change in main div');
+  console.log(event.target, event.target.id);
+  if (event.target && event.target.id === 'userRole') {
+      
+      //Remove Bank Details questions if user is of certain type
+      //console.log('Input value changing');
+      let userRole = document.getElementsByName('userRole')[0].value;
+      //console.log(userRole);
+      let bankElements = document.getElementsByClassName('bankDetails');
+      //console.log(bankElements);
+
+      if (userRole === 'Mumbai Team' ||  userRole === 'Delhi Team') {
+
+          for (let element of bankElements) {
+              element.style.display = 'none'
+              element.removeAttribute('required');
+          }
+      } else {
+          for (let element of bankElements) {
+              element.style.display = 'initial' //Default style
+              element.required = true;
+          }
+      }
+
+  }
+});
+
+//Create a new user
+//If new user was created, notifies user and moves to users list URL
+//If new user could not be created, notifies user and stays on the page
 var href;
 function createUserReq(jsonString) {
   console.log('create users details req initiated');
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
       if (this.status === 200 && this.readyState === 4) {
+        //URL changing with paramters here - on submit
         let resString = this.responseText;
         let resArray = JSON.parse(resString);
         let resObject = resArray[0];
@@ -64,7 +131,7 @@ function createUserReq(jsonString) {
         console.log('response status 200', this.status, this.readyState);
         console.log(this.responseText);
         alert('Details of Team Mate successfully created. Moving back to list of Team Mates');
-        location.href = '/users.html';
+        location.href = '/users-list.html';
       
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
@@ -83,6 +150,7 @@ function createUserReq(jsonString) {
   console.log('breakpoint');
 
 }
+
 
 // window.addEventListener('load', getUserReq);
 

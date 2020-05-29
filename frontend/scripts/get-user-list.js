@@ -1,8 +1,12 @@
+// Gets user list.
+//Alows to delete a user
+//Allows to click user name to see user details
+//Runs when URL is loaded
 function getUserReq() {
   console.log('get users req initiated');
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-      if (this.status == 200 && this.readyState == 4) {
+      if (this.status === 200 && this.readyState === 4) {
         let resString = this.responseText;
         let resArray = JSON.parse(resString);
         console.log('view user - type of res', typeof(res));
@@ -52,6 +56,8 @@ function getUserReq() {
 
 window.addEventListener('load', getUserReq);
 
+//Change URL when user name is clicked
+//The paramters created will be used in an editing user request
 export let textArray;
 
 let mainDiv = document.getElementById('main');
@@ -76,6 +82,7 @@ mainDiv.addEventListener("click", function(event) {
 
 })
 
+//Can delete user with the delete button
 function deleteUserReq(queryParams) {
   console.log('delete user req initiated');
   let xhttp = new XMLHttpRequest();
@@ -86,7 +93,7 @@ function deleteUserReq(queryParams) {
         console.log('view user - type of res', typeof(res), resArray);
         console.log('response status 200', this.status, this.readyState);
         alert('Details of Team Mate successfully deleted. Moving back to list of Team Mates');
-        location.href = '/users.html';
+        location.href = '/users-list.html';
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
         //console.log(this.responseText);
@@ -102,6 +109,7 @@ function deleteUserReq(queryParams) {
   xhttp.send();
 }
 
+//Create parameters used to send a delete user request
 mainDiv.addEventListener("click", function(event) {
   if (event.target && event.target.className === 'delete-user-button') {
     console.log('user name clicked', event.target);

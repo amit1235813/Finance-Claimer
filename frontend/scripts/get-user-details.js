@@ -1,10 +1,7 @@
-//Send req with first name and last name
-//Get extracted data from get-user-list JS file
-// import {textArray} from './get-user-list.js';
-
-// console.log('name of user to show detail for', textArray);
-
-function getUserReq() {
+//Gets user details when a URL is loaded
+//URL is loaded when a user name is clicked
+//Fills the user details in a form
+function getUserDetailsReq() {
   console.log('get users details req initiated');
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -76,6 +73,9 @@ function getUserReq() {
   xhttp.send();
 };
 
+window.addEventListener('load', getUserDetailsReq);
+
+//Removes Bank Details for certain users
 const form = document.getElementById('edit-user-form');
 
 form.addEventListener('change', function (event) {
@@ -98,7 +98,7 @@ form.addEventListener('change', function (event) {
           }
       } else {
           for (let element of bankElements) {
-              element.style.display = 'initial' //Deafult style
+              element.style.display = 'initial' //Default style
               element.required = true;
           }
       }
@@ -106,15 +106,18 @@ form.addEventListener('change', function (event) {
   }
 });
 
+//When form button is clicked, create form data
 form.addEventListener("click", function(event) {
   console.log('edit form submitted', event.target);
-  if (event.target && event.target.id === 'edit-user-button') {
+  if (event.target && event.target.id === 'edit-user-button') {    
       event.preventDefault();
       new FormData(form);
   }
   
 });
 
+//If form data is created, create a request object
+//Call the edit user details function
 form.addEventListener("formdata", event => {
   console.log('edit form data available to use', event.target);
   if (event.target && event.target.id === 'edit-user-form') {
@@ -149,6 +152,9 @@ form.addEventListener("formdata", event => {
   
 });
 
+//Edits user details
+//Notifies user and redirects to user list id editing was successful
+//Notifies user if details could not be edited and stays on the page
 var href;
 function editUserReq(jsonString) {
   console.log('edit users details req initiated');
@@ -162,7 +168,7 @@ function editUserReq(jsonString) {
         console.log('response status 200', this.status, this.readyState);
         console.log(this.responseText);
         alert('Details of Team Mate successfully edited. Moving back to list of Team Mates');
-        location.href = '/users.html';
+        location.href = '/users-list.html';
       
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
@@ -184,8 +190,6 @@ function editUserReq(jsonString) {
   console.log('breakpoint');
 
 }
-
-window.addEventListener('load', getUserReq);
 
 //Edit user details
 //ID is received
