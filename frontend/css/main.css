@@ -1,9 +1,55 @@
+html {
+    background-color:#1a1a00; /*5% yellow*/
+    color: #ffffe6; /*5% yellow*/
+    font-family: 'Garamond';
+    font-size: 24px;
+}
+
+/* Buttons 
+https://fdossena.com/?p=html5cool/buttons/i.frag */
+a {
+    display: inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFE6;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFE6;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+a:hover{
+    color:#1a1a00;
+    background-color:#FFFFE6;
+}
+
+@media all and (max-width:30em){
+ a  {
+        display:block;
+        margin:0.4em auto;
+    }
+}
+
+/* List items */
+ul {
+    list-style: none;
+}
+
+/* Divs */
 div#sidebar {
     float: left;
     width: 20%;
     height: 100vh;
+    padding: 10px;
+    margin: 10px;
+    background-color: #333300; /* 10% yellow*/
 }
 
 div#main {
     height: 100vh;
+    padding: 20px;
 }

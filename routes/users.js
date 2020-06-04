@@ -13,7 +13,7 @@ const _ = require('lodash');
 router.get('/', async (req, res) => {
     console.log('Express being called to view all users');
     const users = await User.find().sort('firstName');
-    console.log(users);
+    // console.log(users);
     //https://stackoverflow.com/questions/37877860/lodash-pick-object-fields-from-array
     res.send(_.map(users, _.partialRight(_.pick, ['_id', 'firstName', 'lastName', 'userRole'])));
 });

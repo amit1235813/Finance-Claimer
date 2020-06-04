@@ -1,4 +1,11 @@
-Chapter 31 - Refactoring Users API
+Chapter 32 - Refactored JavaScript files to make the code modular based on SRP
+1. Refactored Users JS files into a folder
+2. Separated JS files for Event Listeners, API, creating DOM elements
+3. Deleted JS files for router and components
+4. Added CSS for homepage
+4. Added options while connecting to MongoDB to remove deprecation warnings.
+
+Chapter 31 - Refactoring Users API HTML files
 1. Merged simple-html-branch with master before deploying to Heroku in last Chapter
 2. Refactored code to move all HTML files related to Users in a folder
 3. Changed links in HTML files

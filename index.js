@@ -18,7 +18,7 @@ const users = require('./routes/users');
 //available onMongoDB website homepage
 //https://mongoosejs.com/
 // mongoose.connect('mongodb://localhost:27017/finance-claimer-test')
-mongoose.connect('mongodb+srv://amit1235813:21345589@database-cluster-w5nwu.mongodb.net/finance-claimer?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://amit1235813:21345589@database-cluster-w5nwu.mongodb.net/finance-claimer?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 //Returns a Promise which is handled using then and catch
     .then(() => console.log('Connected to MongoDB...'))
     .catch(error => {
@@ -52,7 +52,13 @@ app.use('/', express.static(path.join(__dirname, 'frontend')));
 //For all paths.
 app.use('/', express.json());
 //To use a middleware function at a specific path
+
 //All Epxress API path start with a slash
+// Use /signup and /login
+//All other API and URL are protected by JWT
+//Index HTML changes to login form
+//Post login show the current page on users/
+//Only email login
 app.use('/users/api', users);
 
 app.use('/', error);
