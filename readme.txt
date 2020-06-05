@@ -1,3 +1,13 @@
+Chapter 34 - Prevent home page access by user who has not logged in
+1. On login, set localstorage field to identify if authentication was successful
+2. Before loading the home page, check for local storage item
+3. Until then DOM doesnt display using CSS
+4. If user is authenticated, display DOM
+5. If user is not authenticated, do not display DOM and move to login page
+6. Refactored JS event listeners for signup
+7. Refactored Route Protection Code to Main JS
+8. Added CSS to center Div, for buttons and links
+
 Chapter 33 - Created signup features. User can verify email and create password.
 1. Created login page with register button
 2. To register, email is verified first
@@ -22,7 +32,6 @@ Chapter 31 - Refactoring Users API HTML files
 3. Changed links in HTML files
 4. Changed links in JS files
 5. Tested all 5 User API
-
 
 Chapter 30 - Fix bugs for Edit User form
 1. Bug fix: Hide Bank Details for certain users

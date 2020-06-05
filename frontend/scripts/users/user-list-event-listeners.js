@@ -3,6 +3,8 @@ import {getUserReq, deleteUserReq} from './user-list-api.js';
 //On load, display user list
 window.addEventListener('load', getUserReq);
 
+
+
 //Change URL when user name is clicked
 //The paramters created will be used in an editing user request
 export let textArray;

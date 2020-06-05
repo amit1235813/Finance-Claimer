@@ -5,6 +5,7 @@ import {addDOMElements} from './user-list-dom-elements.js';
 //Allows to click user name to see user details
 //Runs when URL is loaded
 export function getUserReq() {
+  let isAuthenticated = localStorage.getItem('isAuthenticated');
   console.log('get users req initiated');
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

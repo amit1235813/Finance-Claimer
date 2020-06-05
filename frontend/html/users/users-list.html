@@ -9,29 +9,34 @@
 </head>
 <body>
     <div id="container">
-        <div id="sidebar">Sidebar
-            <ul>
-                <li>
-                    <a href="#">Users</a>
-                </li>
-            </ul>
-        </div>
-        <div id="main">
-            <!-- User list will be inserted below.
-            Can click user name to bill groups
-            Can click a button to see user details.
-            Can delete user. -->
-            <p>Click name of a Team Mate to edit details. Add details for new Team Mate from the link at the bottom.</p>
-            <ul id="user-list">
-
-            </ul>
-            <a href="create-user.html">Create details for new team mate</a>
-            <div id="logout">
-                <button id="logout-button">Logout</button>
+        <div id="protected">
+            <div id="sidebar">Sidebar
+                <ul>
+                    <li>
+                        <a href="#">Users</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="main">
+                <!-- User list will be inserted below.
+                Can click user name to bill groups
+                Can click a button to see user details.
+                Can delete user. -->
+                <p>Click name of a Team Mate to edit details. Add details for new Team Mate from the link at the bottom.</p>
+                <ul id="user-list">
+    
+                </ul>
+                <a href="create-user.html">Create details for new team mate</a>
+                <div id="logout">
+                    <button id="logout-button">Logout</button>
+                </div>
             </div>
         </div>
     </div>
 </body>
-    <script src="../../scripts/users/user-list-event-listeners.js" type="module"></script>
-    <script src="../../scripts/auth/logout.js"></script>
+
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/users/user-list-event-listeners.js" type="module"></script>
+<script src="../../scripts/auth/logout.js"></script>
+
 </html>

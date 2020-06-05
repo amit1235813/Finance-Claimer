@@ -8,6 +8,7 @@ logoutDiv.addEventListener("click", function(event) {
         event.preventDefault();
         localStorage.removeItem('isAdmin');
         localStorage.removeItem('_id');
+        localStorage.setItem('isAuthenticated', 'false');
         location.href = '../index.html';
     }
 });

@@ -1,0 +1,11 @@
+div#login-div {
+    max-width: 250px;
+    max-height: 405px; /* Width into phi*/
+    margin: auto;
+    position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    background-color: #333300;
+}
