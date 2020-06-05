@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Amit Saxena">
+
+    <title>IAHV Finance Claimer</title>
+
+    <!-- Bootstrap CSS only 
+    https://getbootstrap.com/ -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/signup.css">
+
+</head>
+<body>
+    <div id="container">
+        <form id="signup-form">
+            <label for="email">Please enter the email registered by the Admin.</label>
+            <input type="email" name="email" id="email" class="cufi" required minlength="6" maxlength="255" pattern="^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]+)(\.[a-z]+)*$">
+            <button id="verify-email-button" type="submit">Verify email</button>            
+        </form>
+        <form id="create-password-form">
+            <div id="email-verified">
+                <p>Email was verified</p>
+                <label for="password">Create password</label>
+                <input type="password" name="password" id="password" class="cufi" required minlength="8" maxlength="255">
+                <label for="password-repeat">Retype password</label>
+                <input type="password" name="password-repeat" id="password-repeat" class="cufi" required minlength="8" maxlength="255">
+                <button id="create-password-button" type="submit">Create password</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+<script src="../../scripts/auth/verify-email-signup.js"></script>
+
+</html>

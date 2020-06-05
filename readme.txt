@@ -1,3 +1,14 @@
+Chapter 33 - Created signup features. User can verify email and create password.
+1. Created login page with register button
+2. To register, email is verified first
+3. Created a GET API to verify if email exists
+4. Display password creation form if email exists
+5. Created a PUT API to add password
+6. Modified User Model
+7. If password is created, move to page displaying Users list
+8. Saved user role and id in local storage
+9. Created a logout button which delted user role and id, and moves to login page
+
 Chapter 32 - Refactored JavaScript files to make the code modular based on SRP
 1. Refactored Users JS files into a folder
 2. Separated JS files for Event Listeners, API, creating DOM elements

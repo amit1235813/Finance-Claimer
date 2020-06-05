@@ -20,13 +20,13 @@ router.get('/', async (req, res) => {
 
 router.get('/user', async (req, res) => {
     console.log('Express being called to view details of a single user');
-    console.log('Req object received by Express to view details of a single user', req.body, req.params);
+    // console.log('Req object received by Express to view details of a single user', req.body, req.params);
     const user = await User.find({
         firstName : req.query.p1,
         lastName : req.query.p2
     }).limit(1).select('-__v'); //Get only one response
     //Do not get version key - https://stackoverflow.com/questions/13699784/mongoose-v-property-hide/22436385
-    console.log(user);
+    // console.log(user);
     //https://stackoverflow.com/questions/37877860/lodash-pick-object-fields-from-array
     res.send(user);
 });
@@ -65,12 +65,11 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/user', async(req, res) => {
-    console.log('Reached Express Put function to edit user details');
+    console.log('Express - user details received to edit', req.body);
     const { error } = validateUserReq(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
-    console.log('User details received by Express - edit', req.body);
     const user = await User.findByIdAndUpdate(req.query.p1, {
         $set: {
             firstName: req.body.firstName,

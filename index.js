@@ -13,6 +13,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 //const cors = require('cors');
 
+const signup = require('./routes/signup');
 const users = require('./routes/users');
 //Example to connect to MongoDB, create a Schema and Model, create an row
 //available onMongoDB website homepage
@@ -52,16 +53,15 @@ app.use('/', express.static(path.join(__dirname, 'frontend')));
 //For all paths.
 app.use('/', express.json());
 //To use a middleware function at a specific path
-
-//All Epxress API path start with a slash
-// Use /signup and /login
-//All other API and URL are protected by JWT
-//Index HTML changes to login form
-//Post login show the current page on users/
-//Only email login
-app.use('/users/api', users);
-
 app.use('/', error);
+//All Epxress API path start with a slash
+// Use /signup and /signup
+//All other API and URL are protected by JWT
+//Index HTML changes to signup form
+//Post signup show the current page on users/
+//Only email signup
+app.use('/auth/api', signup);
+app.use('/users/api', users);
 
 //Hello World example available on
 //http://expressjs.com/en/starter/hello-world.html

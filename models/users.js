@@ -73,9 +73,16 @@ const userSchema = new mongoose.Schema({
         //required: [true, 'IFSC Code is required'],
         minlength: 11,
         maxlength: 11,
-        //Any 4 alphabtets followed by a 0 followed by 6 aplhabets
+        //Any 4 alphabets followed by a 0 followed by 6 alphabets
         //https://en.wikipedia.org/wiki/Indian_Financial_System_Code
         match: [/^[a-zA-Z]{4}0[a-zA-Z]{6}$/, 'Please enter a valid IFSC code'],
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    password: {
+        type: String        
     }
 });
 
@@ -107,23 +114,14 @@ function validateUserReq (user) {
     return schema.validate(user);
 };
 
-/*
-const newUser = new User({
-    name: 'Surbhi Garg',
-    email: 'a@a.co',
-    userRole: 'Associate Project Manager',
-    accountName: 'Surbhi Garg',
-    bankName: 'State Bank of India',
-    bankAccountNumber: 12345,
-    ifscCode: 'HHGF0IJHGKN'
-});
-
-newUser.save()
-    .then(() => { console.log(newUser)})
-    .catch((error) =>  { 
-        console.log('User could not be saved to MongoDB...', error);
+function validateEmail (emailId) {
+    const schema = Joi.object({
+        email: Joi.string().min(1).max(255).required(),
     });
-*/
+
+    return schema.validate(emailId);
+};
 
 module.exports.User = User;
 module.exports.validateUserReq = validateUserReq;
+module.exports.validateEmail = validateEmail;
