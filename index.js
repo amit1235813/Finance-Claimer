@@ -7,6 +7,10 @@ const app =  express();
 const port = process.env.PORT || 3000;
 const path = require('path');
 
+const config = require('config');
+
+const cookieParser = require('cookie-parser');
+const authorize = require('./middleware/authorize');
 const error = require('./middleware/error');
 
 const helmet = require('helmet');
@@ -14,6 +18,7 @@ const compression = require('compression');
 //const cors = require('cors');
 
 const signup = require('./routes/signup');
+const logout = require('./routes/logout');
 const users = require('./routes/users');
 //Example to connect to MongoDB, create a Schema and Model, create an row
 //available onMongoDB website homepage
@@ -28,11 +33,15 @@ mongoose.connect('mongodb+srv://amit1235813:21345589@database-cluster-w5nwu.mong
 
 mongoose.set('useFindAndModify', false);
 
-
 const server = 
 app.listen(port, function() {
     console.log(`Express listening on port ${port}`);
 });
+
+if(!config.get('jwtPrivateKey')) {
+    console.log('FATAL ERROR: jwtPrivateKey is not defined');
+    process.exit(1); //1 means failure
+}
 
 //app.use('/', cors());
 //https://helmetjs.github.io/
@@ -51,6 +60,8 @@ app.use('/', express.static(path.join(__dirname, 'frontend')));
 
 //Built in moddlweware. Converts incoming request strings into JSON object.
 //For all paths.
+app.use('/', cookieParser())
+
 app.use('/', express.json());
 //To use a middleware function at a specific path
 app.use('/', error);
@@ -61,6 +72,8 @@ app.use('/', error);
 //Post signup show the current page on users/
 //Only email signup
 app.use('/auth/api', signup);
+app.use('/\*/api/logout', logout);
+app.use('/users', authorize);
 app.use('/users/api', users);
 
 //Hello World example available on

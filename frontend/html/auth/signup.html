@@ -18,21 +18,27 @@
 <body>
     <div id="container">
         <div id="signup-div">
-            <form id="signup-form">
-                <label for="email">Please enter the email registered by the Admin.</label>
-                <input type="email" name="email" id="email" class="cufi" required minlength="6" maxlength="255" pattern="^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]+)(\.[a-z]+)*$">
-                <button id="verify-email-button" type="submit">Verify email</button>            
-            </form>
-            <form id="create-password-form">
-                <div id="email-verified">
-                    <p>Email was verified</p>
-                    <label for="password">Create password</label>
-                    <input type="password" name="password" id="password" class="cufi" required minlength="8" maxlength="255">
-                    <label for="password-repeat">Retype password</label>
-                    <input type="password" name="password-repeat" id="password-repeat" class="cufi" required minlength="8" maxlength="255">
-                    <button id="create-password-button" type="submit">Create password</button>
-                </div>
-            </form>
+            <div class="signup-row">
+                <img src="../../images/iahv-logo.png" alt="IAHV Logo">
+            </div>
+            <div class="signup-row">
+                <form id="signup-form">
+                    <h3>Verify email</h3>
+                    <label for="email">Please enter the email registered by the Admin</label>
+                    <input type="email" name="email" id="email" placeholder="Email address" class="cufi" required minlength="6" maxlength="255" pattern="^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]+)(\.[a-z]+)*$">
+                    <button id="verify-email-button" type="submit">VERIFY</button>            
+                </form>
+                <form id="create-password-form">
+                    <div id="email-verified">
+                        <p>Email was verified</p>
+                        <label for="password">Create password</label>
+                        <input type="password" name="password" id="password" class="cufi" required minlength="8" maxlength="255">
+                        <label for="password-repeat">Retype password</label>
+                        <input type="password" name="password-repeat" id="password-repeat" class="cufi" required minlength="8" maxlength="255">
+                        <button id="create-password-button" type="submit">Create password</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

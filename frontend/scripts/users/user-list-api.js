@@ -5,11 +5,15 @@ import {addDOMElements} from './user-list-dom-elements.js';
 //Allows to click user name to see user details
 //Runs when URL is loaded
 export function getUserReq() {
-  let isAuthenticated = localStorage.getItem('isAuthenticated');
+  // let isAuthenticated = localStorage.getItem('isAuthenticated');
   console.log('get users req initiated');
+  let token = document.cookie;
+  console.log('Token sent to receive users list :', token, document.cookie);
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
       if (this.status === 200 && this.readyState === 4) {
+        let protectedDiv = document.getElementById('protected');
+        protectedDiv.style.display = 'block';
         let resString = this.responseText;
         let resArray = JSON.parse(resString);
         console.log('view user - type of res', typeof(res));
@@ -20,11 +24,16 @@ export function getUserReq() {
         addDOMElements(resArray);
         //mainDiv.innerHTML = resArray;
       
-      } else {
+      } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
-        //console.log(this.responseText);
+        // console.log(this.responseText);
+        console.log('response status not 200', this.status, this.statusText, this.readyState);
+        
+      } else if (this.status !== 200) {
         console.log('response status not 200', this.status, this.readyState);
+        location.href = "../index.html";
       }
+      
   };
 
   xhttp.open("GET", "api?m=" + Math.random(), true);

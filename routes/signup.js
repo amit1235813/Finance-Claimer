@@ -1,10 +1,10 @@
+const {User, validateEmail, validateUserReq} = require('../models/users');
+
 const express = require('express');
 const router = express.Router();
 
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
-
-const {User, validateEmail, validateUserReq} = require('../models/users');
 
 router.get('/verify', async (req, res) => {
   console.log('Express - Request query received to verify email', req.query);
@@ -29,7 +29,11 @@ router.put('/user', async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(req.body.password, salt);
   user = await user.save();
-  res.send(_.pick(user, ['firstName', 'isAdmin']));
+  const token = user.generateAuthToken();
+  //Cookie path - https://flaviocopes.com/express-cookies/
+  res.cookie('jwt', token, {httpOnly: true});
+  res.send('Password successfully created');
+  // res.send(_.pick(user, ['firstName', 'isAdmin']));
 });
 
 module.exports = router;

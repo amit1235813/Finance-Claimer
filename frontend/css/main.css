@@ -1,6 +1,6 @@
 html {
     background-color:#1a1a00; /*5% yellow*/
-    color: #ffffe6; /*5% yellow*/
+    /* color: #ffffe6; 5% yellow */
     font-family: 'Garamond';
     font-size: 24px;
 }
@@ -22,14 +22,14 @@ button {
     text-decoration:none;
     font-family:'Roboto',sans-serif;
     font-weight:300;
-    color:#1a1a00;
+    color:#FFFFE6;
+    background-color:#1a1a00;
     text-align:center;
     transition: all 0.2s;
 }
 
 button:hover{
-    color:#FFFFE6;
-    background-color:#1a1a00;
+    background-color:#4d4d00; /* 15% yellow */
 }
 
 @media all and (max-width:30em){

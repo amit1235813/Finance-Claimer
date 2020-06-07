@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Joi = require('@hapi/joi');
 
+const jwt = require('jsonwebtoken');
+const config = require('config');
+
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -85,6 +88,11 @@ const userSchema = new mongoose.Schema({
         type: String        
     }
 });
+
+userSchema.methods.generateAuthToken = function(){
+    const token = jwt.sign({_id: this._id, firstName: this.firstName, isAdmin: this.isAdmin}, config.get('jwtPrivateKey'));
+    return token;
+}
 
 //userSchema.path('accountName').required(function() { return this.userRole === 'Project Manager'; }, 'your custom message here');
 

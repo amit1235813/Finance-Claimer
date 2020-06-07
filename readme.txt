@@ -1,3 +1,14 @@
+Chpater 35 - Integrated signup with homepage and protected it
+1. Used flex layout for Email verification page
+2. Used box shadows for 3D look
+3. Removed localstorage of data as it can be accessed by browser plugins
+4. On successful signup, create a JWT. Set it permanently using bash profile and config module
+5. Send JWT in an HTTP Only cookie which cannot be read by JavaScript
+6. Redirect to another page, browser automatically sends cookies in header
+7. Parse the cookie using Cookie Parser for all URLs
+8. Read the cookie in the API, on success show the page. On failure, redirect to login
+9. On logout, remove the cookie and go to login page
+
 Chapter 34 - Prevent home page access by user who has not logged in
 1. On login, set localstorage field to identify if authentication was successful
 2. Before loading the home page, check for local storage item

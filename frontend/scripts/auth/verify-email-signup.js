@@ -10,7 +10,7 @@ export function verifyEmail(email) {
         passwordDiv.style.display = 'block';
         
         //Store id in local storage with a unique name
-        localStorage.setItem('_id', resObject._id);
+        // localStorage.setItem('_id', resObject._id);
 
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
@@ -31,10 +31,12 @@ export function createPassword(jsonString) {
   xhttp.onreadystatechange = function() {
       if (this.status === 200 && this.readyState === 4) {
         let resString = this.responseText;
-        let resObject = JSON.parse(resString);
-        console.log('response status 200', this.status, this.readyState, resObject);
-        localStorage.setItem('isAdmin', resObject.isAdmin);
-        localStorage.setItem('isAuthenticated', 'true');
+        // let resObject = JSON.parse(resString);
+        console.log('response status 200', this.status, this.readyState, resString);
+        // document.cookie = "jwt=" + resString + "; path=/";
+        console.log('Cookie stored after password is created :', document.cookie);
+        // localStorage.setItem('isAdmin', resObject.isAdmin);
+        // localStorage.setItem('isAuthenticated', 'true');
         location.href = '../users/users-list.html';
       } else if (this.readyState !== 4) {
         //We do not want to tell user what error exactly - otherwise a malicious user can misuse
