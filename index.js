@@ -18,6 +18,7 @@ const compression = require('compression');
 //const cors = require('cors');
 
 const signup = require('./routes/signup');
+const login = require('./routes/login');
 const logout = require('./routes/logout');
 const users = require('./routes/users');
 //Example to connect to MongoDB, create a Schema and Model, create an row
@@ -72,8 +73,9 @@ app.use('/', error);
 //Post signup show the current page on users/
 //Only email signup
 app.use('/auth/api', signup);
+app.use('/auth/api/login', login);
 app.use('/\*/api/logout', logout);
-app.use('/users', authorize);
+app.use(['/users', 'projects'], authorize);
 app.use('/users/api', users);
 
 //Hello World example available on

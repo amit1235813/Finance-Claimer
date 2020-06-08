@@ -14,14 +14,27 @@
 </head>
 <body>
     <div id="container">
-        <div id="login-div">
-            <p>Login form will come here</p>
-            <span>For new users</span>
-            <a href="auth/signup.html">Register</a>
+        <div id="login-div" class="flex-card">
+            <div class="login-row">
+                <img src="../images/iahv-logo.png" alt="IAHV Logo">
+            </div>
+            <div class="login-row">
+                <form id="login-form">
+                    <h3>IAHV Finance Claimer</h3>
+                    <input type="email" name="email" id="email" placeholder="Email address" class="cufi" required minlength="6" maxlength="255" pattern="^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]+)(\.[a-z]+)*$">
+                    <input type="password" name="password" id="password" placeholder="Password" class="cufi" required minlength="8" maxlength="255">
+                    <button id="login-button" type="submit">LOGIN</button>            
+                </form>
+                <div id="to-register">
+                    <span>For new users</span>
+                    <a href="auth/signup.html">Register</a>
+                </div>
+            </div>
         </div>
     </div>
 
 </body>
 
+<script src="../scripts/auth/login-event-listeners.js" type="module"></script>
 
 </html>

@@ -1,38 +1,5 @@
-/* Center div vertical and horizontal */
-div#signup-div {
-    max-width: 80%;
-    max-height: 80vh;
-    
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    margin: auto;
-    position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-    right: 0;
-
-    background-color: #ffffe6;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-
-    box-shadow: 5px 5px 10px 5px gray inset;
-    -webkit-box-shadow: 5px 5px 10px 5px gray inset;
-    -moz-box-shadow: 5px 5px 10px 5px gray inset;
-    -ms-box-shadow: 5px 5px 10px 5px gray inset;
-    -o-box-shadow: 5px 5px 10px 5px gray inset;
-}
-
-/* Defining flexboxes */
-div.signup-row, form {
+/* Defining flexbox items */
+div.signup-row, form#signup-form, div#email-verified {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -49,7 +16,6 @@ div.signup-row, form {
 
 div#signup-div img {
     width: 200px;
-    /* padding-bottom: 25px; */
 }
 
 div.signup-row:nth-child(1) {
@@ -60,24 +26,20 @@ div.signup-row:nth-child(2) {
     width: 60%;
 }
 
-/* div.signup-row {
-    width: 50%;
-} */
-
-form#signup-form {
-    color: black;
-}
-
 div#signup-div h3 {
     text-align: center;
     padding: 10px;
     margin: 0;
 }
 
+div#signup-div p {
+    margin: 0;
+}
+
 div#signup-div input {
     margin: 10px;
     margin-top: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     padding: 10px 5px;
     width: 300px;
     border-radius: 10px;
@@ -89,20 +51,25 @@ div#signup-div input {
     color: #0d0d0d;
 }
 
-form#signup-form button {
+div#signup-div button {
     border-radius: 10px;
     width: 120px;
     height: 40px;
     font-size: 16px;
     font-weight: normal;
+    margin-top: 20px;
 
     box-shadow: -1px -1px 2px 1px gray;
 }
 
-form#signup-form button:focus {
+div#signup-div button:focus {
     outline: none;
 }
 
 div#email-verified {
     display: none;
+}
+
+div#email-verified p {
+    text-align: center;
 }

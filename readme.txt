@@ -1,3 +1,10 @@
+Chapter 36 - Created Login API
+1. Created Login form frontend
+2. Cleaned Signup form frontend
+3. Created login API which sends back JWT as Http Only Cookie
+4. The login API checks if the email exists
+5. The login API also checks if the password is matching
+
 Chpater 35 - Integrated signup with homepage and protected it
 1. Used flex layout for Email verification page
 2. Used box shadows for 3D look
