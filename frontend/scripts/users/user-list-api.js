@@ -1,3 +1,4 @@
+import { xhr } from "../utility/xhr.js";
 import { addUserList } from "./user-list-dom-elements.js";
 
 export let modifyUserReq = {};
@@ -11,39 +12,41 @@ modifyUserReq.getUserReq = function () {
   console.log("get users req initiated");
   let token = document.cookie;
   console.log("Token sent to receive users list :", token, document.cookie);
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.status === 200 && this.readyState === 4) {
-      let protectedDiv = document.getElementById("protected");
-      protectedDiv.style.display = "block";
-      let resString = this.responseText;
-      let resArray = JSON.parse(resString);
-      console.log("view user - type of res", typeof (res));
-      console.log("response status 200", this.status, this.readyState);
-      //console.log(this.responseText);
-      //detectUserList(res);
-      //const mainDiv = document.getElementById('main');
-      addUserList.resArray = resArray;
-      addUserList.addDOMElements();
-      //mainDiv.innerHTML = resArray;
-    } else if (this.readyState !== 4) {
-      //We do not want to tell user what error exactly - otherwise a malicious user can misuse
-      // console.log(this.responseText);
-      console.log(
-        "response status not 200",
-        this.status,
-        this.statusText,
-        this.readyState,
-      );
-    } else if (this.status !== 200) {
-      console.log("response status not 200", this.status, this.readyState);
-      location.href = "../index.html";
-    }
-  };
+  xhr.onSuccess = onGetResponse.addUserDetails;
+  xhr.onResNotReady = onGetResponse.onResNotReady;
+  xhr.onFailure = onGetResponse.onFailure;
+  xhr.requestType = "GET";
+  xhr.requestURL = "api?m=" + Math.random();
+  xhr.req();
+};
 
-  xhttp.open("GET", "api?m=" + Math.random(), true);
-  xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send();
+let onGetResponse = {};
+
+onGetResponse.addUserDetails = function () {
+  let protectedDiv = document.getElementById("protected");
+  protectedDiv.style.display = "block";
+  let resString = xhr.responseText;
+  let resArray = JSON.parse(resString);
+  console.log("view user - type of res", typeof (res));
+  console.log("response status 200", xhr.status, xhr.readyState);
+  addUserList.resArray = resArray;
+  addUserList.addDOMElements();
+};
+
+onGetResponse.onResNotReady = function () {
+  //We do not want to tell user what error exactly - otherwise a malicious user can misuse
+  // console.log(this.responseText);
+  console.log(
+    "response status not 200",
+    xhr.status,
+    xhr.statusText,
+    xhr.readyState,
+  );
+};
+
+onGetResponse.onFailure = function () {
+  console.log("response status not 200", xhr.status, xhr.readyState);
+  location.href = "../index.html";
 };
 
 //DELETE
@@ -53,27 +56,33 @@ modifyUserReq.queryParams = undefined;
 
 modifyUserReq.deleteUserReq = function () {
   console.log("delete user req initiated");
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.status == 200 && this.readyState == 4) {
-      let resString = this.responseText;
-      let resArray = JSON.parse(resString);
-      console.log("view user - type of res", typeof (res), resArray);
-      console.log("response status 200", this.status, this.readyState);
-      alert(
-        "Details of Team Mate successfully deleted. Moving back to list of Team Mates",
-      );
-      location.href = "users-list.html";
-    } else if (this.readyState !== 4) {
-      //We do not want to tell user what error exactly - otherwise a malicious user can misuse
-      //console.log(this.responseText);
-      console.log("response status not 200", this.status, this.readyState);
-    } else if (this.status !== 200) {
-      alert("User details could not be deleted");
-    }
-  };
+  xhr.onSuccess = onDeleteResponse.deleteUser;
+  xhr.onResNotReady = onDeleteResponse.onResNotReady;
+  xhr.onFailure = onDeleteResponse.onFailure;
+  xhr.requestType = "EDELETE";
+  xhr.requestURL = "api" + this.queryParams;
+  xhr.req();
+};
 
-  xhttp.open("DELETE", "api/" + this.queryParams, true);
-  xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send();
+let onDeleteResponse = {};
+
+onDeleteResponse.deleteUser = function () {
+  let resString = xhr.responseText;
+  let resArray = JSON.parse(resString);
+  console.log("view user - type of res", resArray);
+  console.log("response status 200", xhr.status, xhr.readyState);
+  alert(
+    "Details of Team Mate successfully deleted. Moving back to list of Team Mates",
+  );
+  location.href = "users-list.html";
+};
+
+onDeleteResponse.onResNotReady = function () {
+  //We do not want to tell user what error exactly - otherwise a malicious user can misuse
+  //console.log(this.responseText);
+  console.log("response status not 200", xhr.status, xhr.readyState);
+};
+
+onDeleteResponse.onFailure = function () {
+  alert("User details could not be deleted");
 };
